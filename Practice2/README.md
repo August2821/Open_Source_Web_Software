@@ -1,10 +1,115 @@
-# HTML
+## HTML Tag
 
-### Tag
-`<br>`: 줄 바꾸기 <br/>
-`<hr>`: 수평선 (horizontal line) <br/>
-`<sub> </sub>`: 아래첨자 (subscript) <br/>
-`<sup> </sup>`: 윗첨자 (superscript)
+### 1. **텍스트 관련 태그**
+| 태그 | 설명 | 주요 속성 및 예제 |
+|------|------|----------------|
+| `<h1>` ~ `<h6>` | 제목 태그 (h1이 가장 크고 h6이 가장 작음) | `<h1>제목</h1>` |
+| `<p>` | 문단 태그 | `<p>이것은 문단입니다.</p>` |
+| `<br>` | 줄 바꿈 (self-closing) | `줄 바꿈<br>이후 텍스트` |
+| `<hr>` | 가로선 (self-closing) | `<hr>` |
+| `<b>` | 굵은 텍스트 (단순 스타일) | `<b>굵은 텍스트</b>` |
+| `<i>` | 기울임꼴 (단순 스타일) | `<i>기울임꼴 텍스트</i>` |
+| `<strong>` | 강조 (중요한 의미) | `<strong>강조된 텍스트</strong>` |
+| `<em>` | 강조 (기울임 + 의미 강조) | `<em>강조된 텍스트</em>` |
+| `<code>` | 코드 블록 | `<code>console.log('Hello')</code>` |
+| `<sup>` | 위 첨자 | `X<sup>2</sup>` |
+| `<sub>` | 아래 첨자 | `H<sub>2</sub>O` |
+| `<address>` | 주소 정보 | `<address>서울, 대한민국</address>` |
+| `<bdo>` | 텍스트 방향 지정 | `<bdo dir="rtl">오른쪽부터</bdo>` |
+| `<blockquote>` | 인용 블록 | `<blockquote>이것은 인용문입니다.</blockquote>` |
+| `<cite>` | 출처 표시 | `<cite>책 제목</cite>` |
+| `<q>` | 인라인 인용 | `<q>짧은 인용문</q>` |
+
+---
+
+### 2. **특수 문자**
+| 코드 | 설명 | 예제 |
+|------|------|------|
+| `&nbsp;` | 공백 추가 | `A&nbsp;B` |
+| `&lt;` | `<` 표시 | `&lt;div&gt;` |
+| `&gt;` | `>` 표시 | `&gt;span&lt;` |
+| `&quot;` | `"` 표시 | `&quot;문자열&quot;` |
+| `&amp;` | `&` 표시 | `Tom &amp; Jerry` |
+| `<!-- -->` | 주석 | `<!-- 여기에 주석을 작성 -->` |
+
+---
+
+### 3. **목록 관련 태그**
+| 태그 | 설명 | 예제 |
+|------|------|------|
+| `<ul>` | 순서 없는 목록 | `<ul><li>항목 1</li></ul>` |
+| `<ol>` | 순서 있는 목록 | `<ol><li>첫 번째</li></ol>` |
+| `<li>` | 목록 항목 | `<li>리스트 항목</li>` |
+
+---
+
+### 4. **링크 및 이미지 태그**
+| 태그 | 설명 | 주요 속성 및 예제 |
+|------|------|----------------|
+| `<a>` | 하이퍼링크 | `<a href="https://example.com">링크</a>` |
+| `target="_blank"` | 새 창에서 열기 | `<a href="url" target="_blank">링크</a>` |
+| `target="_self"` | 현재 창에서 열기 (기본값) | `<a href="url" target="_self">링크</a>` |
+| `target="_parent"` | 부모 프레임에서 열기 | `<a href="url" target="_parent">링크</a>` |
+| `target="_top"` | 최상위 창에서 열기 | `<a href="url" target="_top">링크</a>` |
+| `<img>` | 이미지 삽입 | `<img src="image.jpg" alt="이미지 설명">` |
+| `alt` | 대체 텍스트 | `<img src="image.jpg" alt="설명">` |
+| `src` | 이미지 경로 | `<img src="image.jpg">` |
+| `<picture>` | 반응형 이미지 지원 | `<picture><source srcset="image.webp" type="image/webp"><img src="image.jpg"></picture>` |
+| `<source>` | `picture`, `audio`, `video`에서 사용 | `<source srcset="image.webp" type="image/webp">` |
+
+---
+
+### 5. **테이블 관련 태그**
+| 태그 | 설명 | 예제 |
+|------|------|------|
+| `<table>` | 테이블 생성 | `<table>...</table>` |
+| `<tr>` | 행 생성 | `<tr>...</tr>` |
+| `<td>` | 셀 생성 (데이터) | `<td>내용</td>` |
+| `<th>` | 헤더 셀 | `<th>제목</th>` |
+| `border` | 테두리 설정 | `<table border="1">` |
+| `rowspan` | 행 병합 | `<td rowspan="2">세로 병합</td>` |
+| `colspan` | 열 병합 | `<td colspan="2">합쳐진 셀</td>` |
+
+---
+
+### 6. **미디어 관련 태그**
+| 태그 | 설명 | 주요 속성 및 예제 |
+|------|------|----------------|
+| `<audio>` | 오디오 삽입 | `<audio controls><source src="audio.mp3"></audio>` |
+| `autoplay` | 자동 재생 | `<audio autoplay>` |
+| `controls` | 재생 컨트롤 | `<audio controls>` |
+| `loop` | 반복 재생 | `<audio loop>` |
+| `muted` | 음소거 | `<audio muted>` |
+| `<video>` | 비디오 삽입 | `<video controls><source src="video.mp4"></video>` |
+| `poster` | 미리보기 이미지 | `<video poster="thumbnail.jpg">` |
+| `<iframe>` | 외부 페이지 삽입 | `<iframe src="https://example.com"></iframe>` |
+| `frameborder` | 테두리 설정 | `<iframe frameborder="0">` |
+| `allow` | 특정 기능 허용 | `<iframe allow="fullscreen">` |
+| `allowfullscreen` | 전체 화면 허용 | `<iframe allowfullscreen>` |
+
+---
+
+### 7. **기본 구조 태그**
+| 태그 | 설명 | 예제 |
+|------|------|------|
+| `<!DOCTYPE html>` | HTML5 문서 선언 | `<!DOCTYPE html>` |
+| `<html>` | HTML 문서 루트 요소 | `<html>...</html>` |
+| `<head>` | 문서 정보 포함 | `<head>...</head>` |
+| `<body>` | 문서 본문 | `<body>...</body>` |
+
+---
+
+### 8. **시맨틱 태그**
+| 태그 | 설명 |
+|------|------|
+| `<header>` | 머리글 |
+| `<nav>` | 내비게이션 영역 |
+| `<section>` | 섹션 구분 |
+| `<article>` | 독립적 콘텐츠 |
+| `<aside>` | 사이드 콘텐츠 |
+| `<footer>` | 바닥글 |
+
+<br/>
 
 ---
 
@@ -63,6 +168,8 @@
 |------|------|------|
 | `list` | `<datalist>`와 연결 | `<input type="text" list="suggestions">` |
 | `size` | 입력 필드의 표시 크기 지정 | `<input type="text" size="30">` |
+
+<br/>
 
 ---
 
