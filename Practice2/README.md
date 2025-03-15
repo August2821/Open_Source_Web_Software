@@ -30,6 +30,7 @@
 | `&gt;` | `>` 표시 | `&gt;span&lt;` |
 | `&quot;` | `"` 표시 | `&quot;문자열&quot;` |
 | `&amp;` | `&` 표시 | `Tom &amp; Jerry` |
+| `&copy;` | 저작권 기호 | `&copy; 2024 회사명` |
 | `<!-- -->` | 주석 | `<!-- 여기에 주석을 작성 -->` |
 
 ---
@@ -83,9 +84,11 @@
 | `<video>` | 비디오 삽입 | `<video controls><source src="video.mp4"></video>` |
 | `poster` | 미리보기 이미지 | `<video poster="thumbnail.jpg">` |
 | `<iframe>` | 외부 페이지 삽입 | `<iframe src="https://example.com"></iframe>` |
+| `title` | 프레임 설명 | `<iframe src="url" title="설명"></iframe>` |
 | `frameborder` | 테두리 설정 | `<iframe frameborder="0">` |
-| `allow` | 특정 기능 허용 | `<iframe allow="fullscreen">` |
-| `allowfullscreen` | 전체 화면 허용 | `<iframe allowfullscreen>` |
+| `allow` | 특정 기능 허용 | `<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>` |
+| `referrerpolicy` | 보안 정책 설정 | `<iframe referrerpolicy="strict-origin-when-cross-origin"></iframe>` |
+| `allowfullscreen` | 전체 화면 허용 | `<iframe allowfullscreen></iframe>` |
 
 ---
 
