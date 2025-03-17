@@ -75,7 +75,7 @@
 
 ### 6. **미디어 관련 태그**
 | 태그 | 설명 | 주요 속성 및 예제 |
-|------|------|----------------|
+|------|--------|----------------|
 | `<audio>` | 오디오 삽입 | `<audio controls><source src="audio.mp3"></audio>` |
 | `autoplay` | 자동 재생 | `<audio autoplay>` |
 | `controls` | 재생 컨트롤 | `<audio controls>` |
