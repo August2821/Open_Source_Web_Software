@@ -1,0 +1,6 @@
+.enlarge:hover {font: bold 40px Georgia, serif;}
+td:hover {background-color: gray;}
+table { border-collapse: collapse; border: 2px solid black;}
+th, td {padding: 10px; border: 1px solid gray;}
+ul.skill {list-style-type: square; }
+ul:nth-child(1) {}
