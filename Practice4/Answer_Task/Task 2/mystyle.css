@@ -1,0 +1,52 @@
+#header h1 { color: blue; }
+
+#days {color: red}
+
+.web {text-decoration-line: line-through; }
+
+input[type=text] { background-color: #3CBC8D; }
+
+.section.projects { 
+  text-align: center;
+}
+
+.uppercase { text-transform: uppercase; }
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+  margin: auto;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+}
+
+td:hover {background-color: #ddd;}
+
+.navbar {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  background-color: lightblue;
+  padding: 10px 20px;	
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar li:hover {
+  background-color: #ddd;
+}
+
+
+
+
+
