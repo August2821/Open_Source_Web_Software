@@ -263,4 +263,3 @@ li::marker {
 | **Pseudo-Element** | 요소 내부의 특정 부분 선택 (`::before`, `::first-letter`, `::selection`) |
 
 CSS 선택자는 웹 페이지의 스타일을 세밀하게 조정하는 강력한 도구이며, 다양한 조합을 통해 복잡한 디자인 요구를 충족할 수 있다.
-```
