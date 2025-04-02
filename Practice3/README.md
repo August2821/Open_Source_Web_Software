@@ -52,3 +52,215 @@ p {
 ```
 
 이 코드는 모든 `<p>` 요소의 글자 색상을 파란색으로 지정하고, 글자 크기를 16px로 설정한다.
+
+
+# CSS 선택자(Selector)
+
+CSS 선택자는 HTML 요소를 선택하여 스타일을 적용하는 데 사용된다. 선택자에는 다양한 유형이 있으며, 각각 특정한 방식으로 요소를 선택할 수 있다.
+
+## 1. 기본 선택자
+
+### Type 선택자 (태그 선택자)
+특정 HTML 태그 이름을 사용하여 해당 요소를 선택한다.
+```css
+p {
+  color: blue;
+}
+```
+위 코드는 모든 `<p>` 요소의 글자 색상을 파란색으로 변경한다.
+
+### ID 선택자
+`#` 기호를 사용하여 특정 `id` 속성을 가진 요소를 선택한다.
+```css
+#header {
+  background-color: lightgray;
+}
+```
+위 코드는 `id="header"`인 요소의 배경색을 연한 회색으로 변경한다.
+
+### Class 선택자
+`.` 기호를 사용하여 특정 `class` 속성을 가진 요소를 선택한다.
+```css
+.button {
+  font-weight: bold;
+}
+```
+위 코드는 `class="button"`을 가진 요소의 글자를 굵게 만든다.
+
+### Universal 선택자 (전체 선택자)
+`*` 기호를 사용하여 모든 요소를 선택한다.
+```css
+* {
+  margin: 0;
+  padding: 0;
+}
+```
+위 코드는 모든 요소의 `margin`과 `padding`을 0으로 설정한다.
+
+## 2. 그룹 선택자
+
+### Grouping 선택자 (그룹 선택자)
+쉼표(`,`)를 사용하여 여러 요소를 한 번에 선택할 수 있다.
+```css
+h1, h2, h3 {
+  color: green;
+}
+```
+위 코드는 `<h1>`, `<h2>`, `<h3>` 요소의 글자 색상을 초록색으로 변경한다.
+
+### Descendant 선택자 (하위 선택자)
+공백을 사용하여 특정 요소의 모든 하위 요소를 선택한다.
+```css
+div p {
+  color: red;
+}
+```
+위 코드는 `<div>` 내부의 모든 `<p>` 요소의 글자 색상을 빨간색으로 변경한다.
+
+### Child 선택자 (자식 선택자)
+`>` 기호를 사용하여 특정 요소의 직계 자식만 선택한다.
+```css
+div > p {
+  color: blue;
+}
+```
+위 코드는 `<div>`의 **직계 자식** `<p>` 요소만 선택하여 글자 색상을 파란색으로 변경한다.
+
+### Next Sibling 선택자 (인접 형제 선택자)
+`+` 기호를 사용하여 특정 요소의 **바로 다음 형제 요소**를 선택한다.
+```css
+h1 + p {
+  font-style: italic;
+}
+```
+위 코드는 `<h1>` 다음에 오는 `<p>` 요소의 글꼴을 기울인다.
+
+### General Sibling 선택자 (일반 형제 선택자)
+`~` 기호를 사용하여 특정 요소의 **모든 형제 요소**를 선택한다.
+```css
+h1 ~ p {
+  color: gray;
+}
+```
+위 코드는 `<h1>` 이후의 모든 `<p>` 요소의 글자 색상을 회색으로 변경한다.
+
+## 3. 속성 선택자 (Attribute Selector)
+
+### 특정 속성이 있는 요소 선택
+```css
+input[type="text"] {
+  border: 1px solid black;
+}
+```
+위 코드는 `type="text"`인 `<input>` 요소에 테두리를 추가한다.
+
+### 특정 속성값을 포함하는 요소 선택
+```css
+a[href*="example"] {
+  color: orange;
+}
+```
+위 코드는 `href` 속성에 `"example"`이 포함된 모든 `<a>` 요소의 글자 색상을 주황색으로 변경한다.
+
+## 4. 가상 클래스 선택자 (Pseudo-Class)
+
+### 링크 상태 선택자
+```css
+a:link {
+  color: blue;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  color: red;
+}
+```
+- `:link` → 방문하지 않은 링크
+- `:visited` → 방문한 링크
+- `:hover` → 마우스를 올린 상태
+- `:active` → 클릭한 상태
+
+### 위치 기반 선택자
+```css
+li:nth-child(2) {
+  color: red;
+}
+li:first-child {
+  font-weight: bold;
+}
+li:last-child {
+  font-style: italic;
+}
+```
+- `:nth-child(n)` → n번째 자식을 선택
+- `:first-child` → 첫 번째 자식 선택
+- `:last-child` → 마지막 자식 선택
+
+## 5. 가상 요소 선택자 (Pseudo-Element)
+
+### `::before` & `::after`
+```css
+p::before {
+  content: "★ ";
+}
+p::after {
+  content: " ★";
+}
+```
+- `::before` → 요소 앞에 콘텐츠 추가
+- `::after` → 요소 뒤에 콘텐츠 추가
+
+### `::first-letter` & `::first-line`
+```css
+p::first-letter {
+  font-size: 2em;
+  color: red;
+}
+p::first-line {
+  font-weight: bold;
+}
+```
+- `::first-letter` → 첫 글자 스타일 변경
+- `::first-line` → 첫 줄 스타일 변경
+
+### `::marker` (목록 기호 스타일링)
+```css
+li::marker {
+  color: blue;
+  font-size: 1.2em;
+}
+```
+- `::marker` → 리스트 아이템의 마커(`•`, `1.` 등) 스타일 변경
+
+### `::selection` (선택된 텍스트 스타일링)
+```css
+::selection {
+  background-color: yellow;
+  color: black;
+}
+```
+- `::selection` → 사용자가 선택한 텍스트의 스타일 변경
+
+## 6. 정리
+
+| 선택자 유형 | 설명 |
+|------------|------|
+| **Type** | 특정 태그 이름으로 선택 |
+| **ID** | 특정 `id` 값을 가진 요소 선택 (`#id`) |
+| **Class** | 특정 `class` 값을 가진 요소 선택 (`.class`) |
+| **Universal** | 모든 요소 선택 (`*`) |
+| **Grouping** | 여러 요소를 동시에 선택 (`h1, h2, h3`) |
+| **Descendant** | 특정 요소 내부의 모든 자손 선택 (`div p`) |
+| **Child** | 특정 요소의 직계 자식 선택 (`div > p`) |
+| **Next Sibling** | 특정 요소의 다음 형제 선택 (`h1 + p`) |
+| **General Sibling** | 특정 요소의 모든 형제 선택 (`h1 ~ p`) |
+| **Attribute** | 특정 속성을 가진 요소 선택 (`input[type="text"]`) |
+| **Pseudo-Class** | 요소의 특정 상태 선택 (`:hover`, `:first-child`, `:nth-child(n)`) |
+| **Pseudo-Element** | 요소 내부의 특정 부분 선택 (`::before`, `::first-letter`, `::selection`) |
+
+CSS 선택자는 웹 페이지의 스타일을 세밀하게 조정하는 강력한 도구이며, 다양한 조합을 통해 복잡한 디자인 요구를 충족할 수 있다.
+```
