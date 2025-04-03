@@ -379,3 +379,117 @@ CSS의 `position` 속성은 요소의 배치 방법을 결정하는 속성입니
 <div class="box1">Box 1</div>
 <div class="box2">Box 2</div>
 ```
+---
+
+# CSS Align (정렬)  
+
+CSS에서 요소를 정렬하는 다양한 방법이 있습니다. 요소의 정렬 방식은 텍스트, 이미지, 블록 요소 등의 타입에 따라 다르게 적용됩니다.  
+
+## 1. 요소를 가로 중앙 정렬 (Center Align Elements)  
+
+### `margin: auto;`를 이용한 블록 요소 정렬  
+블록 요소(`div` 등)를 가로로 중앙 정렬하려면 `margin: auto;`를 사용합니다.  
+
+**이유:**  
+브라우저가 왼쪽과 오른쪽의 여백을 자동으로 계산하여 동일한 크기로 나누기 때문입니다.  
+
+```css
+.center-block {
+  width: 200px;
+  background-color: lightblue;
+  margin: auto;
+}
+```
+
+```html
+<div class="center-block">이 요소는 가로 중앙 정렬되었습니다.</div>
+```
+
+## 2. 텍스트 중앙 정렬 (Center Align Text)  
+
+텍스트를 중앙 정렬하려면 `text-align: center;`를 사용합니다.  
+
+```css
+.center-text {
+  text-align: center;
+}
+```
+
+```html
+<p class="center-text">이 텍스트는 가운데 정렬되었습니다.</p>
+```
+
+## 3. 이미지 중앙 정렬 (Center an Image)  
+
+이미지를 중앙에 정렬하려면 `display: block;`을 설정하고 `margin: auto;`를 적용합니다.  
+
+```css
+.center-image {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+```
+
+```html
+<img class="center-image" src="image.jpg" alt="중앙 정렬된 이미지">
+```
+
+## 4. 좌우 정렬 (Left and Right Align)  
+
+### 1) `position: absolute;`를 이용한 정렬  
+요소를 왼쪽 또는 오른쪽에 배치하려면 `position: absolute;`를 사용합니다.  
+
+```css
+.left-absolute {
+  position: absolute;
+  left: 0;
+}
+
+.right-absolute {
+  position: absolute;
+  right: 0;
+}
+```
+
+```html
+<div class="left-absolute">왼쪽 정렬</div>
+<div class="right-absolute">오른쪽 정렬</div>
+```
+
+### 2) `float`을 이용한 정렬  
+`float` 속성을 사용하여 요소를 좌우에 배치할 수도 있습니다.  
+
+```css
+.left-float {
+  float: left;
+}
+
+.right-float {
+  float: right;
+}
+```
+
+```html
+<div class="left-float">왼쪽 정렬</div>
+<div class="right-float">오른쪽 정렬</div>
+```
+
+## 5. 세로 중앙 정렬 (Center Vertically)  
+
+### `padding`을 이용한 세로 중앙 정렬  
+`padding`을 사용하면 요소를 세로 중앙에 배치할 수 있습니다.  
+
+```css
+.vertical-center {
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightgray;
+}
+```
+
+```html
+<div class="vertical-center">이 요소는 세로 중앙 정렬되었습니다.</div>
+```
+
+이제 `margin`, `text-align`, `position`, `float`, `padding`을 활용하여 다양한 정렬 방식을 적용할 수 있습니다!
