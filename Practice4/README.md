@@ -214,7 +214,11 @@ CSS의 `display` 속성은 HTML 요소가 화면에 표시되는 방식을 결�
 
 ---
 
-# CSS의 `position` 속성
+# CSS Placement (배치)  
+
+CSS에서 요소를 배치하는 방식은 `position` 속성과 `float`, `z-index` 등을 활용하여 결정됩니다. 위치를 조정할 때 `top`, `bottom`, `left`, `right` 속성을 사용할 수 있지만, `position` 속성이 먼저 설정되어 있어야 합니다.  
+
+## 1. Positioning (위치 지정)  
 
 CSS의 `position` 속성은 요소의 배치 방법을 결정하는 속성입니다. `position` 속성을 사용하면 요소를 문서 흐름에서 벗어나 원하는 위치에 배치할 수 있습니다.
 
@@ -295,3 +299,83 @@ CSS의 `position` 속성은 요소의 배치 방법을 결정하는 속성입니
 | `fixed` | 뷰포트를 기준으로 고정, 스크롤해도 위치 유지 |
 | `sticky` | 특정 스크롤 위치에서 `fixed`처럼 동작 |
 
+
+## 2. Float (부유 요소)  
+
+`float` 속성은 요소를 좌우로 띄워서 배치할 때 사용됩니다.  
+
+### `float` 값  
+- `left` : 요소를 왼쪽으로 띄움  
+- `right` : 요소를 오른쪽으로 띄움  
+- `none` : 기본값 (float 해제)  
+
+```css
+.float-left {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+}
+
+.float-right {
+  float: right;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
+```
+
+```html
+<div class="float-left">왼쪽 배치</div>
+<div class="float-right">오른쪽 배치</div>
+```
+
+### `clear` 속성  
+- `float`으로 띄운 요소 아래에서 영향을 받지 않도록 설정하는 속성입니다.  
+- `clear: both;`를 사용하면 `float` 요소가 양쪽에서 해제됩니다.  
+
+```css
+.clear {
+  clear: both;
+}
+```
+
+```html
+<div class="clear">float 해제됨</div>
+```
+
+## 3. Z-Index (쌓임 순서)  
+
+`z-index` 속성은 요소가 다른 요소와 겹칠 때 **위쪽(앞쪽) 또는 아래쪽(뒤쪽)으로 배치하는 순서**를 결정합니다.  
+
+### `z-index` 값  
+- 숫자가 클수록 **위쪽(앞쪽)** 에 배치됨  
+- 기본값은 `auto` (HTML 순서대로 배치됨)  
+- `position` 속성이 `static`이 아닌 경우에만 동작함  
+
+```css
+.box1 {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  z-index: 1;
+}
+
+.box2 {
+  position: absolute;
+  top: 70px;
+  left: 70px;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  z-index: 2; /* 더 높은 값이므로 box1 위에 표시됨 */
+}
+```
+
+```html
+<div class="box1">Box 1</div>
+<div class="box2">Box 2</div>
+```
