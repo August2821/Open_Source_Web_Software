@@ -850,4 +850,124 @@ p {
 - `font-size`와 `font-weight`로 **크기와 굵기 조절**
 - `font-style`로 **이탤릭 등 스타일 적용**
 - `font` 단축 속성으로 **효율적인 설정 가능**
+
+---
+
+# CSS Properties - Table 관련 속성
+
+CSS에서 테이블(`table`)의 스타일을 조정하는 다양한 속성이 있다.  
+이 문서에서는 **테두리, 크기, 간격, 정렬, 캡션 위치 등**과 관련된 속성을 설명한다.
+
+## 1. `border`
+테이블 및 셀(`td`, `th`)의 테두리를 설정하는 속성이다.
+
+```css
+table, th, td {
+  border: 1px solid black;
+}
 ```
+
+| 값 | 설명 |
+|----|------|
+| `border-width` | 테두리 두께 지정 (예: `1px`) |
+| `border-style` | 테두리 스타일 지정 (`solid`, `dashed`, `dotted` 등) |
+| `border-color` | 테두리 색상 지정 (`black`, `red` 등) |
+
+## 2. `border-collapse`
+셀 테두리 간격을 설정하는 속성이다.
+
+```css
+table {
+  border-collapse: collapse;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `collapse` | 인접한 테두리를 하나로 합침 |
+| `separate` | 기본값, 각 셀의 테두리를 개별적으로 유지 |
+
+## 3. `width`
+테이블 또는 셀의 너비를 설정하는 속성이다.
+
+```css
+table {
+  width: 80%;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `px` | 고정 크기 (예: `500px`) |
+| `%` | 부모 요소 대비 백분율 (예: `80%`) |
+
+## 4. `height`
+테이블 또는 셀의 높이를 설정하는 속성이다.
+
+```css
+table {
+  height: 300px;
+}
+```
+
+- `px` 또는 `%` 단위 사용 가능
+
+## 5. `border-spacing`
+셀 사이의 간격을 조정하는 속성이다.  
+(`border-collapse: separate`일 때만 적용됨)
+
+```css
+table {
+  border-spacing: 10px;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `px` | 셀 간격을 픽셀 단위로 지정 |
+| `0` | 간격 없음 |
+
+## 6. `empty-cells`
+비어 있는 셀의 테두리 표시 여부를 결정하는 속성이다.
+
+```css
+table {
+  empty-cells: hide;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `show` | 기본값, 빈 셀에도 테두리 표시 |
+| `hide` | 빈 셀의 테두리를 숨김 |
+
+## 7. `table-align`
+테이블을 페이지 내에서 정렬하는 속성이다.  
+(`table` 요소에는 `margin`을 활용하여 정렬 가능)
+
+```css
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `left` | 왼쪽 정렬 (`margin-right: auto;`) |
+| `center` | 가운데 정렬 (`margin-left: auto; margin-right: auto;`) |
+| `right` | 오른쪽 정렬 (`margin-left: auto;`) |
+
+## 8. `caption-side`
+테이블 제목(`<caption>`)의 위치를 설정하는 속성이다.
+
+```css
+caption {
+  caption-side: bottom;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `top` | 기본값, 테이블 위쪽에 위치 |
+| `bottom` | 테이블 아래쪽에 위치 |
