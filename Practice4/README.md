@@ -63,6 +63,157 @@ CSS에서는 `box-sizing` 속성을 사용하여 박스 크기를 조정할 수 
 
 ---
 
+# CSS Display 속성  
+
+CSS의 `display` 속성은 HTML 요소가 화면에 표시되는 방식을 결정합니다. 요소의 기본적인 흐름을 제어하며, 다양한 값들을 사용하여 배치를 조정할 수 있습니다.  
+
+## Block Element (블록 요소)  
+블록 요소는 기본적으로 새로운 줄에서 시작하며, 가능한 전체 너비를 차지합니다.  
+
+### 특징  
+- 기본적으로 `width: 100%`를 차지함  
+- 새로운 줄에서 시작됨  
+- `height`, `width`, `margin`, `padding` 등을 자유롭게 조절 가능  
+
+### 대표적인 블록 요소  
+- `<div>`, `<p>`, `<h1>` ~ `<h6>`, `<ul>`, `<ol>`, `<li>`, `<section>`, `<article>` 등  
+
+### 예제  
+```css
+.block-element {
+  display: block;
+  width: 200px;
+  height: 100px;
+  background-color: lightblue;
+}
+```
+
+```html
+<div class="block-element">블록 요소</div>
+<p class="block-element">이것도 블록 요소입니다.</p>
+```
+
+## Inline Element (인라인 요소)  
+인라인 요소는 새로운 줄에서 시작하지 않으며, 콘텐츠 크기만큼만 공간을 차지합니다.  
+
+### 특징  
+- 새로운 줄에서 시작되지 않음  
+- 콘텐츠 크기만큼만 공간을 차지함  
+- `width`와 `height` 속성을 직접 조절할 수 없음  
+- `margin`과 `padding`을 수직 방향으로 적용하기 어려움  
+
+### 대표적인 인라인 요소  
+- `<span>`, `<a>`, `<strong>`, `<em>`, `<img>`, `<label>`, `<abbr>` 등  
+
+### 예제  
+```css
+.inline-element {
+  display: inline;
+  background-color: yellow;
+}
+```
+
+```html
+<span class="inline-element">인라인 요소</span>
+<a class="inline-element">이것도 인라인 요소입니다.</a>
+```
+
+## Display 속성 값  
+### 1. `display: none;`  
+- 요소를 화면에서 완전히 제거합니다.  
+- 해당 요소는 DOM에는 존재하지만, 렌더링되지 않으며 공간도 차지하지 않습니다.  
+
+```css
+.hidden {
+  display: none;
+}
+```
+
+```html
+<div class="hidden">이 요소는 보이지 않습니다.</div>
+```
+
+### 2. `display: block;`  
+- 요소를 블록 요소로 설정합니다.  
+
+```css
+.block {
+  display: block;
+}
+```
+
+```html
+<span class="block">이 요소는 블록 요소로 변환되었습니다.</span>
+```
+
+### 3. `display: inline;`  
+- 요소를 인라인 요소로 설정합니다.  
+
+```css
+.inline {
+  display: inline;
+}
+```
+
+```html
+<div class="inline">이 요소는 인라인 요소로 변환되었습니다.</div>
+```
+
+### 4. `display: inline-block;`  
+- 인라인 요소처럼 동작하지만 `width`, `height`, `margin`, `padding`을 적용할 수 있음  
+
+```css
+.inline-block {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  background-color: lightgreen;
+}
+```
+
+```html
+<div class="inline-block">이 요소는 inline-block입니다.</div>
+```
+
+## Visibility 속성  
+`visibility` 속성은 요소의 가시성을 조정합니다.  
+
+### 1. `visibility: visible;`  
+- 기본값이며, 요소가 보입니다.  
+
+```css
+.visible {
+  visibility: visible;
+}
+```
+
+```html
+<div class="visible">이 요소는 보입니다.</div>
+```
+
+### 2. `visibility: hidden;`  
+- 요소를 숨기지만, 해당 요소가 차지하는 공간은 유지됩니다.  
+
+```css
+.hidden {
+  visibility: hidden;
+}
+```
+
+```html
+<div class="hidden">이 요소는 숨겨졌지만 공간은 차지합니다.</div>
+```
+
+### `display: none;` vs `visibility: hidden;` 차이  
+| 속성 | 요소가 화면에서 보이는가? | 공간을 차지하는가? |
+|------|-----------------|---------------|
+| `display: none;` | No | No |
+| `visibility: hidden;` | No | Yes |
+
+이제 `display` 속성을 활용하여 레이아웃을 자유롭게 조정할 수 있습니다!
+
+---
+
 # CSS의 `position` 속성
 
 CSS의 `position` 속성은 요소의 배치 방법을 결정하는 속성입니다. `position` 속성을 사용하면 요소를 문서 흐름에서 벗어나 원하는 위치에 배치할 수 있습니다.
