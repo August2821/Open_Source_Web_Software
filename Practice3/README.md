@@ -971,3 +971,125 @@ caption {
 |----|------|
 | `top` | 기본값, 테이블 위쪽에 위치 |
 | `bottom` | 테이블 아래쪽에 위치 |
+
+---
+
+# CSS Properties - List 관련 속성
+
+CSS에서 목록(`list`)의 스타일을 조정하는 다양한 속성이 있다.  
+이 문서에서는 **목록 유형, 배경색, 리스트 아이템 마커(custom marker)** 등을 설정하는 방법을 설명한다.
+
+## 1. `list-style-type`
+목록의 아이템 앞에 표시되는 마커(marker) 유형을 설정하는 속성이다.
+
+```css
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: upper-roman;
+}
+```
+
+### (1) `ul` (순서 없는 목록)
+| 값 | 설명 |
+|----|------|
+| `disc` | ● 기본값 (채워진 원) |
+| `circle` | ○ 빈 원 |
+| `square` | ■ 채워진 정사각형 |
+| `none` | 마커 없음 |
+
+### (2) `ol` (순서 있는 목록)
+| 값 | 설명 |
+|----|------|
+| `decimal` | 1, 2, 3, ... (기본값) |
+| `decimal-leading-zero` | 01, 02, 03, ... |
+| `lower-roman` | i, ii, iii, iv, ... |
+| `upper-roman` | I, II, III, IV, ... |
+| `lower-alpha` | a, b, c, ... |
+| `upper-alpha` | A, B, C, ... |
+
+## 2. Add Background Colors to Lists and List Items
+목록 자체(`ul`, `ol`) 또는 개별 아이템(`li`)에 배경색을 추가할 수 있다.
+
+```css
+ul {
+  background-color: lightgray;
+}
+
+li {
+  background-color: lightblue;
+  padding: 5px;
+  margin: 2px;
+}
+```
+
+- `ul`의 배경색은 전체 목록에 적용됨
+- `li`의 배경색은 개별 목록 항목에 적용됨
+
+## 3. Set an Image as the List Item Marker
+기본 마커 대신 **이미지를 리스트 마커로 설정**할 수 있다.
+
+```css
+ul {
+  list-style-image: url("marker.png");
+}
+```
+
+**단점:** `list-style-image`는 크기 조정이 어렵고, 배경 이미지와 함께 쓰는 경우 제어가 어려움.  
+**대안:** `::before` 가상 요소를 활용하여 커스텀 마커를 추가할 수 있다.
+
+```css
+li::before {
+  content: url("marker.png");
+  margin-right: 10px;
+}
+```
+
+## 4. Set Different List Item Markers for Unordered Lists
+순서 없는 목록(`ul`)에서 **각 항목마다 다른 마커를 설정**할 수 있다.
+
+```css
+ul li:nth-child(1) {
+  list-style-type: circle;
+}
+
+ul li:nth-child(2) {
+  list-style-type: square;
+}
+
+ul li:nth-child(3) {
+  list-style-type: disc;
+}
+```
+
+- `nth-child(n)` 선택자를 사용하여 특정 항목에 개별 스타일 적용 가능
+
+## 5. Set Different List Item Markers for Ordered Lists
+순서 있는 목록(`ol`)에서 **각 항목마다 다른 마커를 설정**할 수 있다.
+
+```css
+ol li:nth-child(1) {
+  list-style-type: decimal;
+}
+
+ol li:nth-child(2) {
+  list-style-type: lower-roman;
+}
+
+ol li:nth-child(3) {
+  list-style-type: upper-alpha;
+}
+```
+
+- 첫 번째 항목 → `1, 2, 3, ...`
+- 두 번째 항목 → `i, ii, iii, ...`
+- 세 번째 항목 → `A, B, C, ...`
+
+## 정리
+
+- `list-style-type`으로 **마커 유형 변경**
+- `list-style-image`로 **이미지 마커 설정 가능**
+- `nth-child(n)`를 활용하여 **각 아이템별 다른 마커 적용 가능**
+- `background-color`로 **목록 및 개별 아이템 배경색 지정 가능**
