@@ -52,6 +52,44 @@ WWW는 다음과 같은 단계로 동작한다.
 
 ---
 
+# 소프트웨어와 개발 개요
+
+## 1. Proprietary Software (독점 소프트웨어)
+
+**Proprietary Software(독점 소프트웨어)**는 소스 코드가 비공개이며, 특정 기업이나 개인이 소유 및 관리하는 소프트웨어를 의미한다.
+
+- 사용자는 라이선스를 구매해야 사용 가능
+- 수정 및 재배포가 제한됨
+- 대표적인 예시: Microsoft Windows, Adobe Photoshop, macOS
+
+## 2. Open Source Software (오픈 소스 소프트웨어)
+
+**Open Source Software(오픈 소스 소프트웨어)**는 소스 코드가 공개되어 있으며, 누구나 자유롭게 사용, 수정, 배포할 수 있는 소프트웨어를 의미한다.
+
+- 개발자 및 사용자 커뮤니티가 유지보수
+- 비용 없이 자유롭게 활용 가능
+- 대표적인 예시: Linux, Apache, Mozilla Firefox, Blender
+
+## 3. Front End Development (프론트엔드 개발)
+
+**프론트엔드 개발**은 사용자가 직접 상호작용하는 웹사이트 또는 애플리케이션의 UI(User Interface) 부분을 개발하는 작업이다.
+
+- 주요 기술: HTML, CSS, JavaScript
+- 프레임워크 및 라이브러리: React, Vue.js, Angular
+- 역할: 웹사이트 디자인 구현, 사용자 경험(UX) 개선, 반응형 웹 개발
+
+## 4. Back End Development (백엔드 개발)
+
+**백엔드 개발**은 데이터베이스, 서버, 애플리케이션 로직 등 웹 애플리케이션의 내부 기능을 담당하는 개발 영역이다.
+
+- 주요 언어: Python, Java, Node.js, PHP, Ruby
+- 데이터베이스: MySQL, PostgreSQL, MongoDB
+- 역할: 데이터 처리, 사용자 인증, API 개발 및 관리
+
+프론트엔드와 백엔드는 함께 협력하여 웹 애플리케이션을 완성하며, 풀스택 개발자는 이 두 영역을 모두 다룰 수 있는 개발자를 의미한다.
+
+---
+
 ## HTML Tag
 
 ### 1. **텍스트 관련 태그**
