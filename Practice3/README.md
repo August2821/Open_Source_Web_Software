@@ -558,3 +558,153 @@ body {
 | `contain` | 요소에 맞게 배경 이미지를 조정 (비율 유지) |
 | `100px 200px` | 가로 100px, 세로 200px 크기로 조정 |
 | `50% 50%` | 요소 크기의 50%만큼 설정 |
+
+---
+
+# CSS Properties - Text 관련 속성
+
+CSS에서 텍스트와 관련된 속성들은 웹 페이지의 가독성을 높이고, 다양한 스타일을 적용하는 데 사용된다.  
+이 문서에서는 **색상, 방향, 간격, 정렬, 장식, 그림자, 변형 등**과 관련된 속성을 설명한다.
+
+## 1. `color`
+텍스트의 색상을 설정하는 속성이다.
+
+```css
+p {
+  color: blue;
+}
+```
+
+- 색상명 (`red`, `blue` 등)
+- 16진수 (`#ff0000`)
+- RGB (`rgb(255, 0, 0)`)
+- RGBA (`rgba(255, 0, 0, 0.5)`, 투명도 포함)
+
+## 2. `direction`
+텍스트의 읽기 방향을 설정하는 속성이다.
+
+```css
+p {
+  direction: rtl;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `ltr` | 기본값, 왼쪽에서 오른쪽(LTR) 방향 |
+| `rtl` | 오른쪽에서 왼쪽(RTL) 방향 |
+
+## 3. `letter-spacing`
+글자 간격을 조정하는 속성이다.
+
+```css
+p {
+  letter-spacing: 2px;
+}
+```
+
+- `normal`: 기본값
+- `2px`: 글자 간격을 2px로 설정
+
+## 4. `line-height`
+줄 간격을 설정하는 속성이다.
+
+```css
+p {
+  line-height: 1.5;
+}
+```
+
+- `normal`: 기본값
+- `1.5`: 글자 크기의 1.5배 높이
+
+## 5. `text-align`
+텍스트 정렬을 설정하는 속성이다.
+
+```css
+p {
+  text-align: center;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `left` | 왼쪽 정렬 (기본값) |
+| `center` | 가운데 정렬 |
+| `right` | 오른쪽 정렬 |
+| `justify` | 양쪽 정렬 |
+
+## 6. `text-decoration`
+텍스트의 장식을 설정하는 속성이다.
+
+```css
+p {
+  text-decoration: underline;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `none` | 기본값, 장식 없음 |
+| `underline` | 밑줄 표시 |
+| `overline` | 위쪽 선 표시 |
+| `line-through` | 취소선 표시 |
+
+## 7. `text-indent`
+첫 줄 들여쓰기를 설정하는 속성이다.
+
+```css
+p {
+  text-indent: 20px;
+}
+```
+
+- `20px`: 첫 줄을 20px 들여쓰기
+
+## 8. `text-shadow`
+텍스트에 그림자를 추가하는 속성이다.
+
+```css
+p {
+  text-shadow: 2px 2px 5px gray;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `2px` | 그림자의 가로 위치 |
+| `2px` | 그림자의 세로 위치 |
+| `5px` | 그림자의 흐림 정도 |
+| `gray` | 그림자 색상 |
+
+## 9. `text-transform`
+텍스트의 대소문자를 변환하는 속성이다.
+
+```css
+p {
+  text-transform: uppercase;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `none` | 변환 없음 (기본값) |
+| `uppercase` | 모든 문자 대문자로 변환 |
+| `lowercase` | 모든 문자 소문자로 변환 |
+| `capitalize` | 각 단어의 첫 글자를 대문자로 변환 |
+
+## 10. `text-decoration-line`
+텍스트 장식을 추가하는 속성이다.
+
+```css
+p {
+  text-decoration-line: underline;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `none` | 장식 없음 |
+| `underline` | 밑줄 표시 |
+| `overline` | 위쪽 선 표시 |
+| `line-through` | 취소선 표시 |
