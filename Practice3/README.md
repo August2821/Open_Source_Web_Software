@@ -415,3 +415,146 @@ p {
 | **Hierarchy (계층 구조)** | 동일한 특정성을 가진 스타일이 여러 개 있다면, **나중에 선언된 스타일이 적용됨** |
 
 이러한 개념을 이해하면 CSS를 더욱 정밀하게 제어할 수 있으며, 스타일 충돌을 방지할 수 있다.
+
+---
+
+# CSS Properties - Background 관련 속성
+
+CSS에서 `background` 관련 속성들은 요소의 배경을 설정하는 데 사용된다. 이 문서에서는 **배경색, 배경 이미지, 배경 크기, 반복 여부, 위치 등**을 설정하는 주요 속성을 설명한다.
+
+## 1. `background` (Shorthand Property)
+
+`background` 속성은 여러 배경 관련 속성을 한 번에 설정할 수 있는 단축 속성이다.
+
+```css
+body {
+  background: #ffcc00 url("background.jpg") no-repeat center fixed;
+}
+```
+
+위의 예제는 아래의 속성을 한 번에 설정한 것이다.
+- `background-color: #ffcc00;`
+- `background-image: url("background.jpg");`
+- `background-repeat: no-repeat;`
+- `background-position: center;`
+- `background-attachment: fixed;`
+
+## 2. `background-attachment`
+
+배경 이미지가 스크롤과 함께 움직일지 고정될지를 설정하는 속성이다.
+
+| 값 | 설명 |
+|----|------|
+| `scroll` | 기본값, 배경이 스크롤됨 |
+| `fixed` | 배경이 고정됨 |
+| `local` | 요소의 내용과 함께 배경이 스크롤됨 |
+
+```css
+body {
+  background-attachment: fixed;
+}
+```
+
+## 3. `background-color`
+
+배경 색상을 지정하는 속성이다. 다양한 방식으로 표현할 수 있다.
+
+### 3.1 색상명을 이용한 표현 (Express by Text)
+```css
+body {
+  background-color: red;
+}
+```
+
+### 3.2 16진수(HEX) 값으로 표현 (Express Hexadecimals)
+```css
+body {
+  background-color: #ff0000;
+}
+```
+
+### 3.3 RGB 값을 이용한 표현 (Express by 10 Digits)
+```css
+body {
+  background-color: rgb(255, 0, 0);
+}
+```
+
+### 3.4 퍼센트(%)를 이용한 표현 (Express by Percent)
+```css
+body {
+  background-color: rgba(100%, 0%, 0%, 1);
+}
+```
+
+### 3.5 투명도 설정 (Opacity)
+```css
+body {
+  background-color: rgba(255, 0, 0, 0.5); /* 반투명 빨간색 */
+}
+```
+
+## 4. `background-image`
+
+배경 이미지를 설정하는 속성이다.
+
+```css
+body {
+  background-image: url("image.jpg");
+}
+```
+
+- `none`: 배경 이미지 없음 (기본값)
+- `url("이미지경로")`: 배경 이미지 적용
+
+## 5. `background-position`
+
+배경 이미지의 위치를 설정하는 속성이다.
+
+```css
+body {
+  background-position: center top;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `left top` | 왼쪽 상단 |
+| `center center` | 중앙 정렬 |
+| `right bottom` | 오른쪽 하단 |
+| `50% 50%` | 가로 50%, 세로 50% 위치 |
+
+## 6. `background-repeat`
+
+배경 이미지의 반복 여부를 설정하는 속성이다.
+
+```css
+body {
+  background-repeat: no-repeat;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `repeat` | 기본값, 배경 이미지를 반복 |
+| `no-repeat` | 배경 이미지를 한 번만 표시 |
+| `repeat-x` | 가로 방향으로만 반복 |
+| `repeat-y` | 세로 방향으로만 반복 |
+
+## 7. `background-size`
+
+배경 이미지의 크기를 조절하는 속성이다.
+
+```css
+body {
+  background-size: cover;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `auto` | 기본값, 원본 크기로 표시 |
+| `cover` | 요소의 전체 크기에 맞게 조정 (비율 유지) |
+| `contain` | 요소에 맞게 배경 이미지를 조정 (비율 유지) |
+| `100px 200px` | 가로 100px, 세로 200px 크기로 조정 |
+| `50% 50%` | 요소 크기의 50%만큼 설정 |
