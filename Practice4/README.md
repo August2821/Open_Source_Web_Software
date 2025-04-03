@@ -1,3 +1,68 @@
+# CSS Box Model
+
+CSS Box Model은 HTML 요소가 화면에 표시될 때 크기와 간격을 결정하는 원리입니다. 모든 요소는 사각형의 박스로 구성되며, 이 박스는 다음과 같은 4가지 구성 요소로 이루어집니다.
+
+## Box Model 구성 요소
+
+### 1. **Actual Content (내용 영역)**
+   - 요소의 실제 콘텐츠가 표시되는 영역입니다.
+   - `width`와 `height` 속성으로 크기를 지정할 수 있습니다.
+
+### 2. **Padding (패딩)**
+   - 콘텐츠와 테두리(`border`) 사이의 여백입니다.
+   - 요소의 내부 간격을 조정하는 역할을 합니다.
+   - `padding: 10px;`과 같이 설정하면 모든 방향의 패딩이 10px로 적용됩니다.
+
+### 3. **Border (테두리)**
+   - 요소를 감싸는 경계선입니다.
+   - `border-width`, `border-style`, `border-color` 속성으로 조정할 수 있습니다.
+   - 예: `border: 2px solid black;`
+
+### 4. **Margin (마진)**
+   - 요소와 다른 요소 사이의 간격을 설정하는 영역입니다.
+   - `margin: 20px;`으로 설정하면 요소의 외부 여백이 20px로 적용됩니다.
+
+## How to Calculate Box Size (박스 크기 계산)
+
+기본적으로 요소의 총 크기는 다음과 같이 계산됩니다.
+
+```
+총 너비 = width + padding-left + padding-right + border-left + border-right + margin-left + margin-right
+총 높이 = height + padding-top + padding-bottom + border-top + border-bottom + margin-top + margin-bottom
+```
+
+### 예제
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: 5px solid black;
+  margin: 20px;
+}
+```
+
+위 스타일이 적용된 요소의 총 크기 계산:
+
+- **너비**: `200px (content) + 10px * 2 (padding) + 5px * 2 (border) + 20px * 2 (margin) = 270px`
+- **높이**: `100px (content) + 10px * 2 (padding) + 5px * 2 (border) + 20px * 2 (margin) = 170px`
+
+## `box-sizing` 속성
+CSS에서는 `box-sizing` 속성을 사용하여 박스 크기를 조정할 수 있습니다.
+
+- `content-box` (기본값): `width`와 `height`는 **콘텐츠 크기**만 포함합니다.
+- `border-box`: `width`와 `height`가 **패딩과 테두리를 포함한 크기**로 설정됩니다.
+
+```css
+.box {
+  box-sizing: border-box;
+}
+```
+
+`border-box`를 사용하면 `width`와 `height` 속성에 `padding`과 `border`가 포함되므로, 계산이 더 간단해집니다.
+
+---
+
 # CSS의 `position` 속성
 
 CSS의 `position` 속성은 요소의 배치 방법을 결정하는 속성입니다. `position` 속성을 사용하면 요소를 문서 흐름에서 벗어나 원하는 위치에 배치할 수 있습니다.
