@@ -263,3 +263,191 @@ li::marker {
 | **Pseudo-Element** | 요소 내부의 특정 부분 선택 (`::before`, `::first-letter`, `::selection`) |
 
 CSS 선택자는 웹 페이지의 스타일을 세밀하게 조정하는 강력한 도구이며, 다양한 조합을 통해 복잡한 디자인 요구를 충족할 수 있다.
+
+
+# CSS 스타일 적용 방법과 우선순위
+
+CSS는 여러 가지 방법으로 웹 페이지에 스타일을 적용할 수 있으며, 각각의 방법은 특정한 **우선순위(Priority)** 를 가진다. 또한 **특정성(Specificity)** 과 **계층 구조(Hierarchy)** 를 통해 최종적으로 어떤 스타일이 적용될지 결정된다.
+
+---
+
+## 1. CSS 스타일 적용 방법
+
+### 1.1 External Style Sheet (외부 스타일 시트)
+별도의 `.css` 파일을 만들어 `<link>` 태그로 연결하여 스타일을 적용하는 방법이다.
+
+- **장점**:
+  - 여러 HTML 문서에서 같은 스타일을 공유할 수 있어 유지보수가 용이함.
+  - HTML과 스타일을 분리하여 코드 가독성을 높일 수 있음.
+- **단점**:
+  - 별도의 파일을 불러와야 하므로 네트워크 속도에 영향을 받을 수 있음.
+
+```html
+<!-- HTML 문서에서 외부 CSS 파일을 연결 -->
+<link rel="stylesheet" href="styles.css">
+```
+
+```css
+/* styles.css */
+p {
+  color: blue;
+  font-size: 16px;
+}
+```
+
+---
+
+### 1.2 Internal Style Sheet (내부 스타일 시트)
+HTML 문서 내 `<style>` 태그를 사용하여 스타일을 적용하는 방법이다.
+
+- **장점**:
+  - 외부 CSS 파일이 필요하지 않으므로 빠르게 로드됨.
+  - 특정 HTML 파일에만 스타일을 적용할 때 유용함.
+- **단점**:
+  - 여러 HTML 파일에서 동일한 스타일을 사용할 경우 중복 작성해야 함.
+  - HTML과 CSS가 섞여 가독성이 떨어질 수 있음.
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <style>
+    p {
+      color: green;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <p>이것은 내부 스타일 시트입니다.</p>
+</body>
+</html>
+```
+
+---
+
+### 1.3 Inline Style (인라인 스타일)
+HTML 요소의 `style` 속성을 사용하여 직접 스타일을 적용하는 방법이다.
+
+- **장점**:
+  - 특정 요소에만 빠르게 스타일을 적용할 수 있음.
+  - 외부 CSS 파일 없이 간단한 수정이 가능함.
+- **단점**:
+  - 코드가 지저분해지고 유지보수가 어려움.
+  - 스타일을 여러 요소에 적용하려면 중복 코드가 발생함.
+
+```html
+<p style="color: red; font-size: 20px;">이것은 인라인 스타일입니다.</p>
+```
+
+---
+
+### 1.4 Web Browser Default Value (웹 브라우저 기본 스타일)
+웹 브라우저는 HTML 요소에 기본 스타일을 적용한다. 예를 들어:
+
+```css
+body {
+  margin: 8px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+p {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+```
+
+기본 스타일을 제거하고 싶은 경우 다음과 같이 `reset` 또는 `normalize` CSS를 사용할 수 있다.
+
+```css
+/* 기본 스타일 제거 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+```
+
+---
+
+## 2. CSS 우선순위(Priority)와 특정성(Specificity)
+
+CSS 스타일이 여러 곳에서 정의되었을 때 어떤 스타일이 적용될지를 결정하는 요소는 **우선순위(Priority)**, **특정성(Specificity)**, 그리고 **계층 구조(Hierarchy)** 이다.
+
+### 2.1 우선순위 (Priority)
+아래 순서대로 스타일이 적용되며, **아래에 위치할수록 높은 우선순위를 가진다.**
+1. **웹 브라우저 기본 스타일** (가장 낮음)
+2. **외부 스타일 시트 (External)**
+3. **내부 스타일 시트 (Internal)**
+4. **인라인 스타일 (Inline)**
+5. **`!important` 키워드 사용** (가장 높음)
+
+```css
+p {
+  color: blue !important;  /* 최우선 적용 */
+}
+
+p {
+  color: green;  /* 적용되지 않음 */
+}
+```
+
+---
+
+### 2.2 특정성 (Specificity)
+특정성이 높을수록 우선적으로 적용된다. 특정성은 아래 기준으로 점수를 계산할 수 있다.
+
+| 선택자 유형 | 특정성 점수 |
+|------------|------------|
+| 태그 선택자 (`p`, `div`) | 1점 |
+| 클래스 선택자 (`.class`) | 10점 |
+| ID 선택자 (`#id`) | 100점 |
+| 인라인 스타일 (`style="color: red;"`) | 1000점 |
+| `!important` 키워드 | 무조건 최우선 |
+
+#### 특정성 예제:
+```css
+p { color: black; }          /* 특정성: 1 */
+.class-name { color: blue; } /* 특정성: 10 */
+#id-name { color: red; }     /* 특정성: 100 */
+```
+
+적용 결과:
+- `#id-name`이 가장 높은 특정성을 가지므로 **빨간색**이 적용됨.
+
+---
+
+### 2.3 계층 구조 (Hierarchy)
+CSS는 **계층적(Cascading)** 으로 적용되며, 동일한 특정성을 가진 스타일이 여러 개 있다면 **나중에 작성된 스타일이 적용된다.**
+
+```css
+p {
+  color: black;
+}
+
+p {
+  color: green; /* 마지막에 선언되어 적용됨 */
+}
+```
+
+결과적으로 **초록색**이 적용된다.
+
+---
+
+## 3. 정리
+
+| 개념 | 설명 |
+|------|------|
+| **External Style Sheet** | 별도의 `.css` 파일에서 스타일을 정의하고 `<link>` 태그로 불러옴 |
+| **Internal Style Sheet** | HTML 문서 내부의 `<style>` 태그에 스타일을 작성 |
+| **Inline Style** | 개별 HTML 요소에 `style` 속성을 사용하여 직접 스타일 지정 |
+| **Web Browser Default Value** | 브라우저가 기본적으로 적용하는 스타일 |
+| **Priority (우선순위)** | `!important` > 인라인 스타일 > 내부 스타일 시트 > 외부 스타일 시트 > 브라우저 기본값 |
+| **Specificity (특정성)** | `ID (100점) > Class (10점) > 태그 (1점)` |
+| **Hierarchy (계층 구조)** | 동일한 특정성을 가진 스타일이 여러 개 있다면, **나중에 선언된 스타일이 적용됨** |
+
+이러한 개념을 이해하면 CSS를 더욱 정밀하게 제어할 수 있으며, 스타일 충돌을 방지할 수 있다.
