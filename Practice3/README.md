@@ -708,3 +708,146 @@ p {
 | `underline` | 밑줄 표시 |
 | `overline` | 위쪽 선 표시 |
 | `line-through` | 취소선 표시 |
+
+---
+
+# CSS Properties - Font 관련 속성
+
+CSS의 `font` 속성들은 텍스트의 **서체, 크기, 스타일, 두께** 등을 설정하는 데 사용된다.  
+이 문서에서는 **폰트 관련 주요 속성**과 **단축 속성(Shorthand)**에 대해 설명한다.
+
+## 1. `font`
+`font` 속성은 개별적인 **폰트 관련 속성을 한 번에 설정**할 수 있는 단축 속성이다.
+
+```css
+p {
+  font: italic small-caps bold 16px/1.5 "Arial", sans-serif;
+}
+```
+
+위의 설정은 아래와 동일하다.
+- `font-style: italic;`
+- `font-variant: small-caps;`
+- `font-weight: bold;`
+- `font-size: 16px;`
+- `line-height: 1.5;`
+- `font-family: "Arial", sans-serif;`
+
+**사용법**
+```css
+font: [font-style] [font-variant] [font-weight] [font-size]/[line-height] [font-family];
+```
+
+## 2. `font-family`
+글꼴(서체)을 설정하는 속성이다. 여러 개를 입력할 경우, 앞쪽 폰트가 없으면 뒤쪽 폰트를 대체한다.
+
+```css
+p {
+  font-family: "Arial", "Helvetica", sans-serif;
+}
+```
+
+- `"Arial"`, `"Helvetica"`: 우선적으로 적용될 폰트
+- `sans-serif`: 모든 폰트가 없을 경우 기본 sans-serif 폰트 사용
+
+## 3. `font-size`
+폰트의 크기를 설정하는 속성이다.
+
+```css
+p {
+  font-size: 20px;
+}
+```
+
+### (1) 단위 종류 (Units of Font)
+| 단위 | 설명 |
+|------|------|
+| `px` | 픽셀 단위 (고정 크기) |
+| `pt` | 포인트 단위 (인쇄물에서 많이 사용) |
+| `%` | 부모 요소 대비 백분율 |
+| `em` | 부모 요소의 폰트 크기 배율 (`1em = 부모 크기와 동일`) |
+| `vw` | 화면 너비(Viewport Width)의 백분율 |
+
+### 예제
+```css
+p {
+  font-size: 150%; /* 부모 크기의 150% */
+}
+
+h1 {
+  font-size: 2em; /* 부모 크기의 2배 */
+}
+
+h2 {
+  font-size: 5vw; /* 화면 너비의 5% */
+}
+```
+
+## 4. `font-style`
+폰트의 스타일을 지정하는 속성이다.
+
+```css
+p {
+  font-style: italic;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `normal` | 기본 스타일 |
+| `italic` | 이탤릭체 (기울어진 글꼴) |
+| `oblique` | 글자를 기울임 (기울어진 형태의 일반 글꼴) |
+
+## 5. `font-weight`
+폰트의 굵기를 설정하는 속성이다.
+
+```css
+p {
+  font-weight: bold;
+}
+```
+
+| 값 | 설명 |
+|----|------|
+| `normal` | 기본값 (보통 굵기) |
+| `bold` | 굵은 글씨 |
+| `lighter` | 부모 요소보다 가는 글씨 |
+| `bolder` | 부모 요소보다 굵은 글씨 |
+| `100 ~ 900` | 폰트의 굵기를 100~900 사이로 설정 (100: 가장 얇음, 900: 가장 굵음) |
+
+**예제**
+```css
+h1 {
+  font-weight: 900; /* 매우 굵게 */
+}
+
+h2 {
+  font-weight: 300; /* 얇게 */
+}
+```
+
+## 6. Font Shorthand (단축 속성)
+
+`font` 속성을 사용하면 여러 폰트 속성을 **한 줄로 설정**할 수 있다.
+
+```css
+p {
+  font: italic bold 20px/1.5 "Arial", sans-serif;
+}
+```
+
+**속성 순서**
+1. `font-style` (선택 사항)
+2. `font-variant` (선택 사항)
+3. `font-weight` (선택 사항)
+4. `font-size` (필수)
+5. `/line-height` (선택 사항)
+6. `font-family` (필수)
+
+## 정리
+
+- `font-family`로 **서체 지정**
+- `font-size`와 `font-weight`로 **크기와 굵기 조절**
+- `font-style`로 **이탤릭 등 스타일 적용**
+- `font` 단축 속성으로 **효율적인 설정 가능**
+```
