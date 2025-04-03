@@ -13,28 +13,6 @@ CSS의 풀네임인 **Cascading Style Sheets**에서 "Cascading"은 스타일이
 - **코드의 재사용성 증가**: CSS 파일을 분리하여 여러 HTML 문서에서 공통 스타일을 적용할 수 있다.
 - **웹 접근성 향상**: 스타일을 적절히 조정하여 사용자 경험을 개선할 수 있다.
 
-## CSS 적용 방법
-
-1. **인라인 스타일** (HTML 요소 내부에 직접 스타일 적용)
-   ```html
-   <p style="color: blue; font-size: 16px;">이것은 인라인 스타일입니다.</p>
-   ```
-
-2. **내부 스타일 시트** (`<style>` 태그 사용)
-   ```html
-   <style>
-     p {
-       color: blue;
-       font-size: 16px;
-     }
-   </style>
-   ```
-
-3. **외부 스타일 시트** (`.css` 파일을 별도로 작성 후 링크)
-   ```html
-   <link rel="stylesheet" href="styles.css">
-   ```
-
 ## CSS의 기본 문법
 
 ```css
