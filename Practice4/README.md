@@ -620,3 +620,76 @@ body {
 - CSS 변수를 활용하면 **코드가 깔끔하고 유지보수가 쉬워집니다**.
 - `:root`에서 선언하면 **전역적으로 사용 가능**, 특정 요소에서만 선언하면 **지역 변수로 사용 가능**합니다.  
 - 변수 사용을 통해 **한 번에 값 변경이 가능**하므로, **효율적인 스타일 관리**가 가능합니다.
+
+---
+
+# CSS Layout (레이아웃)  
+
+CSS 레이아웃은 웹 페이지에서 **HTML 요소의 위치, 크기, 배치 방식**을 결정하는 방법입니다.  
+이는 마치 **집 안의 가구를 배치하는 것과 유사**합니다.
+
+## 1. **CSS 레이아웃의 역할**
+- HTML 요소들이 **어떤 위치에 배치될지** 결정
+- 요소들의 **크기와 간격 조정**
+- 사용자의 화면 크기에 따라 **반응형 디자인 적용**
+
+## 2. **기본적인 웹 페이지 레이아웃 구조**  
+
+웹 페이지는 보통 `div` 또는 시맨틱 태그(`<header>`, `<nav>`, `<section>`, `<footer>`)를 사용하여 구조를 정의합니다.  
+
+```html
+<div id="header">헤더 영역</div>
+<div id="nav">내비게이션</div>
+<div id="content">본문 영역</div>
+<div id="footer">푸터 영역</div>
+```
+
+또는 다음과 같이 시맨틱 태그를 활용할 수도 있습니다.  
+
+```html
+<header>헤더</header>
+<nav>내비게이션</nav>
+<section>본문</section>
+<footer>푸터</footer>
+```
+
+## 3. **CSS로 웹 페이지 레이아웃 만들기**  
+아래 예제는 기본적인 **4개의 영역(헤더, 내비게이션, 본문, 푸터)** 으로 구성된 웹 페이지 레이아웃입니다.
+
+```css
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header, nav, section, footer {
+  padding: 20px;
+  text-align: center;
+}
+
+header {
+  background-color: #ffcc00;
+}
+
+nav {
+  background-color: #0099ff;
+  color: white;
+}
+
+section {
+  background-color: #f4f4f4;
+  min-height: 300px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+}
+```
+
+```html
+<header>헤더</header>
+<nav>내비게이션</nav>
+<section>본문</section>
+<footer>푸터</footer>
+```
