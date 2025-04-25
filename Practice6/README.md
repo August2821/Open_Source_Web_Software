@@ -966,8 +966,6 @@ var person = {
 };
 ```
 
----
-
 ## 객체 속성 접근 방법
 
 속성은 두 가지 방식으로 접근할 수 있습니다:
@@ -1048,4 +1046,123 @@ console.log(person.fullName.apply(person1, ["Oslo", "Norway"]));
 ```javascript
 person.fullName.call(person1, "Seoul", "Korea");
 person.fullName.apply(person1, ["Seoul", "Korea"]);
+```
+
+# JavaScript 객체 메서드 (Object Methods)
+
+## ❖ 개요
+
+JavaScript에서는 객체를 효율적으로 조작하고 처리하기 위한 여러 내장 메서드를 제공합니다. 아래는 주요 객체 메서드들과 각각의 기능 및 사용 예시입니다.
+
+## `Object.assign(target, source)`
+
+- 하나 이상의 **source 객체**의 속성을 **target 객체**로 복사합니다.
+- 기존의 target 객체를 변경하며, 반환값은 target 객체입니다.
+
+### 예시
+```javascript
+const target = { a: 1 };
+const source = { b: 2, c: 3 };
+
+const result = Object.assign(target, source);
+console.log(result); // { a: 1, b: 2, c: 3 }
+```
+
+## `Object.create(proto)`
+
+- 주어진 프로토타입 객체를 갖는 **새로운 객체**를 생성합니다.
+- 상속 구조를 만들 때 유용합니다.
+
+### 예시
+```javascript
+const person = {
+  greet: function() {
+    return "Hello";
+  }
+};
+
+const student = Object.create(person);
+student.name = "Alice";
+
+console.log(student.greet()); // Hello
+```
+
+## `Object.entries(obj)`
+
+- 객체의 **[key, value] 쌍의 배열**을 반환합니다.
+- 반복 처리나 변환에 자주 사용됩니다.
+
+### 예시
+```javascript
+const user = { name: "Tom", age: 25 };
+const entries = Object.entries(user);
+console.log(entries); // [ ['name', 'Tom'], ['age', 25] ]
+```
+
+## `Object.fromEntries(entries)`
+
+- `[key, value]` 배열의 리스트로부터 객체를 생성합니다.
+- `Object.entries()`의 반대 기능입니다.
+
+### 예시
+```javascript
+const entries = [['name', 'Jane'], ['age', 30]];
+const obj = Object.fromEntries(entries);
+console.log(obj); // { name: 'Jane', age: 30 }
+```
+
+## `Object.keys(obj)`
+
+- 객체의 **속성 이름(key)**만을 배열로 반환합니다.
+
+### 예시
+```javascript
+const person = { name: "Mike", age: 28 };
+console.log(Object.keys(person)); // ['name', 'age']
+```
+
+## `Object.values(obj)`
+
+- 객체의 **속성 값(value)**만을 배열로 반환합니다.
+
+### 예시
+```javascript
+const person = { name: "Mike", age: 28 };
+console.log(Object.values(person)); // ['Mike', 28]
+```
+
+## `Object.groupBy(items, callback)`
+
+- 배열이나 객체의 요소들을 **callback 함수의 반환값**에 따라 그룹화합니다.
+- ES2024에서 도입된 새로운 메서드입니다.
+
+### 예시
+```javascript
+const people = [
+  { name: "Alice", age: 20 },
+  { name: "Bob", age: 21 },
+  { name: "Charlie", age: 20 }
+];
+
+const grouped = Object.groupBy(people, person => person.age);
+console.log(grouped);
+// {
+//   20: [{ name: 'Alice', age: 20 }, { name: 'Charlie', age: 20 }],
+//   21: [{ name: 'Bob', age: 21 }]
+// }
+```
+
+## `for...in` 반복문
+
+- 객체의 **모든 열거 가능한 속성(key)**을 순회합니다.
+
+### 예시
+```javascript
+const person = { name: "David", age: 35 };
+
+for (let key in person) {
+  console.log(key + ": " + person[key]);
+}
+// name: David
+// age: 35
 ```
