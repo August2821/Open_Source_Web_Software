@@ -668,3 +668,212 @@ document.getElementById("myDIV").style.position = "absolute";  // 위치 고정
 ```
 
 ---
+
+# JavaScript DOM Navigation
+
+## HTML 문서의 모든 것은 노드(Node)이다
+
+HTML 문서에서 각각의 구성 요소는 모두 "노드(Node)"로 구성된 트리 구조로 표현됩니다.
+
+- 전체 문서는 **문서 노드(Document Node)**  
+- 각 HTML 요소는 **요소 노드(Element Node)**  
+- HTML 요소 내부의 텍스트는 **텍스트 노드(Text Node)**  
+- 주석은 **주석 노드(Comment Node)**  
+
+### 예시
+```html
+<!-- 주석 노드 -->
+<p id="text">안녕하세요</p>
+```
+
+이 구조는 다음과 같이 분해됩니다:
+- `<p>`: 요소 노드
+- `"안녕하세요"`: 텍스트 노드
+- `<!-- ... -->`: 주석 노드
+
+## 트리 구조에서의 노드 관계
+
+DOM은 계층 구조(hierarchical structure)를 가집니다.
+
+- 부모(Parent): 상위 노드
+- 자식(Child): 하위 노드
+- 형제(Sibling): 같은 부모를 가진 노드들
+
+### 계층적 구조 예시
+```html
+<div>
+  <p>첫 번째 문장</p>
+  <p>두 번째 문장</p>
+</div>
+```
+
+- `div`는 `p`들의 **부모**
+- 각 `p`는 `div`의 **자식**
+- 두 `p`는 서로 **형제 노드**
+
+## 노드 간의 관계 요약
+
+- 트리 구조의 최상단 노드는 **루트 노드(root node)**  
+- 모든 노드는 **하나의 부모**를 가짐 (루트 노드는 제외)
+- 노드는 **여러 자식**을 가질 수 있음
+- 같은 부모를 가진 노드들은 **형제 노드**
+
+## 노드 탐색을 위한 주요 속성 (Node Properties)
+
+| 속성/메서드 | 설명 |
+|-------------|------|
+| `parentNode` | 부모 노드를 반환 |
+| `childNodes[n]` | 자식 노드 중 n번째 노드를 반환 |
+| `firstChild` | 첫 번째 자식 노드를 반환 |
+| `lastChild` | 마지막 자식 노드를 반환 |
+| `nextSibling` | 다음 형제 노드를 반환 |
+| `previousSibling` | 이전 형제 노드를 반환 |
+| `textContent` | 해당 노드의 텍스트 콘텐츠를 반환 |
+| `nodeValue` | 텍스트 또는 주석 노드의 실제 값 반환 |
+| `nodeName` | 노드의 이름 반환 (예: `DIV`, `P`) |
+| `nodeType` | 노드 유형을 숫자로 반환 (1: 요소, 3: 텍스트 등) |
+
+## 노드 탐색 예제
+
+HTML 예시:
+```html
+<title id="demo">DOM Tutorial</title>
+```
+
+JavaScript 예시:
+```javascript
+const el = document.getElementById("demo");
+
+// 방법 1
+let value1 = el.innerHTML;
+
+// 방법 2
+let value2 = el.firstChild.nodeValue;
+
+// 방법 3
+let value3 = el.childNodes[0].nodeValue;
+```
+
+## 요소 추가 및 삭제 (DOM 조작)
+
+| 메서드 | 설명 |
+|--------|------|
+| `document.createElement("tagname")` | 새로운 요소 생성 |
+| `document.createTextNode("text")` | 텍스트 노드 생성 |
+| `parent.appendChild(node)` | 자식 노드로 추가 |
+| `parent.removeChild(child)` | 자식 노드를 제거 |
+| `parent.replaceChild(new, old)` | 기존 노드를 새로운 노드로 교체 |
+
+## DOM 조작의 기본 원리
+
+1. 요소 생성  
+   ```javascript
+   const newDiv = document.createElement("div");
+   ```
+
+2. 속성 및 텍스트 추가  
+   ```javascript
+   newDiv.textContent = "새로운 박스";
+   newDiv.setAttribute("class", "box");
+   ```
+
+3. 문서에 삽입  
+   ```javascript
+   document.body.appendChild(newDiv);
+   ```
+
+## 요소 추가 예시 (createElement + appendChild)
+
+```html
+<div id="container"></div>
+
+<script>
+  const container = document.getElementById("container");
+  const newP = document.createElement("p");
+  newP.textContent = "새 문장";
+  container.appendChild(newP);
+</script>
+```
+
+## 텍스트 노드를 활용한 추가 예시
+
+```html
+<div id="content"></div>
+
+<script>
+  const p = document.createElement("p");
+  const text = document.createTextNode("텍스트 노드로 추가됨");
+  p.appendChild(text);
+  document.getElementById("content").appendChild(p);
+</script>
+```
+
+## 요소 삭제 예시
+
+```html
+<ul id="list">
+  <li>첫 번째</li>
+  <li>두 번째</li>
+</ul>
+
+<script>
+  const ul = document.getElementById("list");
+  const li = ul.getElementsByTagName("li")[0];
+  ul.removeChild(li);
+</script>
+```
+
+## 요소 교체 예시 (replaceChild)
+
+```html
+<div id="box">기존 박스</div>
+
+<script>
+  const newDiv = document.createElement("div");
+  newDiv.textContent = "새 박스";
+
+  const oldDiv = document.getElementById("box");
+  document.body.replaceChild(newDiv, oldDiv);
+</script>
+```
+
+## 실습 예제: 간단한 To-Do 리스트 만들기
+
+```html
+<input id="taskInput" type="text">
+<button onclick="addTask()">추가</button>
+<ul id="todoList"></ul>
+
+<script>
+  function addTask() {
+    const input = document.getElementById("taskInput");
+    const newTask = document.createElement("li");
+    newTask.textContent = input.value;
+
+    const list = document.getElementById("todoList");
+    list.appendChild(newTask);
+    input.value = "";
+  }
+</script>
+```
+
+## HTML 요소 탐색 방법: HTMLCollection vs NodeList
+
+| 구분 | HTMLCollection | NodeList |
+|------|----------------|----------|
+| 반환 방법 | `getElementsByTagName`, `getElementsByClassName` | `querySelectorAll` |
+| 포함 노드 | 요소 노드(Element Node)만 포함 | 요소, 속성, 텍스트 노드 포함 가능 |
+| 접근 방식 | 이름(name), id, index | index만 가능 |
+| 실시간 반영 | 예 (DOM 변경 시 자동 반영됨) | 아니오 (정적 리스트) |
+
+### 예시
+```javascript
+const collection = document.getElementsByClassName("item"); // HTMLCollection
+const nodelist = document.querySelectorAll(".item"); // NodeList
+
+console.log(collection.length);  // 가능
+console.log(nodelist.length);   // 가능
+```
+
+---
+
