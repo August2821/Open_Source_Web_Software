@@ -304,3 +304,241 @@ img {
 ```
 
 ---
+
+# Bootstrap Tutorial
+
+## 1. Bootstrap이란?
+
+- **Bootstrap**은 웹 개발을 더 쉽고 빠르게 할 수 있도록 도와주는 **무료 프론트엔드 프레임워크**입니다.
+- 반응형 디자인을 쉽게 구현할 수 있도록 다양한 도구를 제공합니다.
+- HTML 및 CSS 기반의 다양한 **미리 정의된 클래스**를 제공하여 웹 요소를 쉽게 구성할 수 있습니다.
+  - 타이포그래피, 폼, 버튼, 테이블, 내비게이션, 모달, 이미지 등 다양한 UI 요소 구성 가능
+
+## 2. Bootstrap 요소
+
+### 2-1. 타이포그래피 클래스
+
+| 클래스 | 설명 |
+|--------|------|
+| `.text-left` | 텍스트를 왼쪽 정렬 |
+| `.text-center` | 텍스트를 가운데 정렬 |
+| `.text-right` | 텍스트를 오른쪽 정렬 |
+| `.text-justify` | 텍스트 양쪽 정렬 |
+| `.text-nowrap` | 텍스트 줄바꿈 방지 |
+| `.text-lowercase` | 텍스트 소문자 변환 |
+| `.text-uppercase` | 텍스트 대문자 변환 |
+| `.text-capitalize` | 각 단어의 첫 글자 대문자 변환 |
+
+### 2-2. 이미지 모양 클래스
+
+| 클래스 | 설명 |
+|--------|------|
+| `.img-rounded` | 둥근 모서리 이미지 |
+| `.img-circle` | 원형 이미지 |
+| `.img-thumbnail` | 테두리가 있는 썸네일 이미지 |
+
+> CSS로도 원형 이미지를 만들 수 있습니다: `border-radius: 50%`
+
+**예시:**
+
+```html
+<img src="sample.jpg" class="img-circle" alt="Circle Image">
+```
+
+### 2-3. 버튼 클래스
+
+#### 버튼 스타일
+
+| 클래스 | 설명 |
+|--------|------|
+| `.btn` | 기본 버튼 |
+| `.btn-default` | 회색 기본 버튼 |
+| `.btn-primary` | 파란색 주요 버튼 |
+| `.btn-success` | 녹색 성공 버튼 |
+| `.btn-info` | 파란색 정보 버튼 |
+| `.btn-warning` | 주황색 경고 버튼 |
+| `.btn-danger` | 빨간색 위험 버튼 |
+| `.btn-link` | 링크 버튼 스타일 |
+
+#### 버튼 크기
+
+| 클래스 | 설명 |
+|--------|------|
+| `.btn-lg` | 큰 버튼 |
+| `.btn-sm` | 작은 버튼 |
+| `.btn-xs` | 매우 작은 버튼 |
+
+#### 블록 버튼
+
+- `.btn-block`: 전체 너비를 차지하는 블록 형태 버튼
+
+#### 활성/비활성 버튼
+
+- `.active`: 활성 상태 버튼
+- `.disabled`: 비활성 상태 버튼
+
+```html
+<button class="btn btn-primary btn-lg">큰 파란 버튼</button>
+```
+
+## 3. Collapse (접기 기능)
+
+- 많은 내용을 접었다 펼 수 있는 유용한 구성 요소입니다.
+- 구성 요소:
+  - `.collapse` 클래스: 접기 가능 요소
+  - `data-toggle="collapse"` 속성: 클릭 시 동작
+  - `data-target="#id"` 속성: 어떤 요소를 접을지 지정
+
+**예시:**
+
+```html
+<button data-toggle="collapse" data-target="#demo" class="btn btn-info">토글</button>
+<div id="demo" class="collapse">
+  여기에 접히는 내용이 들어갑니다.
+</div>
+```
+
+## 4. Glyphicons (아이콘)
+
+- Bootstrap은 260개의 아이콘(Glyphicons)을 제공합니다.
+
+**예시 아이콘 클래스**:
+
+```html
+<span class="glyphicon glyphicon-envelope"></span> 메일
+<span class="glyphicon glyphicon-print"></span> 프린트
+<span class="glyphicon glyphicon-search"></span> 검색
+<span class="glyphicon glyphicon-download"></span> 다운로드
+```
+
+## 5. Bootstrap Grid (그리드 시스템)
+
+- 반응형 레이아웃을 위한 시스템
+- 한 줄에 최대 12개의 컬럼까지 배치 가능
+- 화면 크기에 따라 컬럼을 조절할 수 있도록 도와줌
+
+### 기본 구조
+
+```html
+<div class="row">
+  <div class="col-md-6">절반 너비</div>
+  <div class="col-md-6">절반 너비</div>
+</div>
+```
+
+### 그리드 클래스 종류
+
+| 클래스 접두사 | 사용 환경 |
+|---------------|------------|
+| `xs` | 휴대폰 (<768px) |
+| `sm` | 태블릿 (≥768px) |
+| `md` | 노트북 (≥992px) |
+| `lg` | 데스크탑 (≥1200px) |
+
+## 6. 반응형 이미지
+
+- `.img-responsive` 클래스 사용 시, 이미지가 부모 요소에 맞춰 자동 조절됨
+
+```html
+<img src="image.jpg" class="img-responsive" alt="반응형 이미지">
+```
+
+## 7. Bootstrap 내비게이션 바
+
+### 기본 내비게이션 바 만들기
+
+```html
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">로고</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">홈</a></li>
+      <li><a href="#">페이지1</a></li>
+    </ul>
+  </div>
+</nav>
+```
+
+### 주요 클래스 설명
+
+| 클래스 | 설명 |
+|--------|------|
+| `.navbar` | 내비게이션 바 생성 |
+| `.navbar-default` | 기본 스타일(회색) |
+| `.navbar-inverse` | 어두운 배경 스타일 |
+| `.navbar-header` | 로고 또는 제목 영역 |
+| `.navbar-brand` | 로고 또는 브랜드 링크 |
+| `.navbar-left` | 왼쪽 정렬 |
+| `.navbar-right` | 오른쪽 정렬 |
+| `.navbar-nav` | 내비게이션 링크 그룹 |
+
+### 작은 화면에서의 토글 버튼
+
+```html
+<button class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</button>
+```
+
+## 8. 스크롤 효과
+
+```css
+html {
+  scroll-behavior: smooth;
+}
+```
+
+- 부드러운 스크롤링 기능 제공
+
+## 9. 테이블
+
+| 클래스 | 설명 |
+|--------|------|
+| `.table` | 기본 테이블 스타일 |
+| `.table-striped` | 줄마다 배경색 교차 |
+| `.table-bordered` | 테두리 포함 |
+| `.table-hover` | 마우스 오버 시 강조 |
+| `.table-condensed` | 셀 간격 줄이기 |
+
+**예시:**
+
+```html
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tr><th>이름</th><th>나이</th></tr>
+  <tr><td>홍길동</td><td>30</td></tr>
+</table>
+```
+
+## 10. 폼
+
+- 폼 요소들은 자동으로 전역 스타일을 가짐
+- 각 입력 그룹은 `.form-group`으로 감싸야 함
+- `.form-control` 클래스는 `input`, `textarea`, `select` 등에 사용
+
+**예시:**
+
+```html
+<form>
+  <div class="form-group">
+    <label for="name">이름:</label>
+    <input type="text" class="form-control" id="name">
+  </div>
+</form>
+```
+
+## 11. Bootstrap 추가 방법
+
+- Bootstrap 라이브러리는 HTML `<head>` 안에 포함
+
+```html
+<!-- CDN 방식 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+```
+
+- HTML 요소에 Bootstrap 클래스들을 사용하면 다양한 UI 구성 가능
