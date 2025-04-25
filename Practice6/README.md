@@ -763,3 +763,159 @@ printInfo("철수");
 // 이름: 철수
 // 나이: undefined
 ```
+
+## JavaScript 배열 (Array)
+
+### 배열 생성 (리터럴 방식)
+```javascript
+var cars = ["Saab", "Volvo", "BMW"];
+```
+- 배열은 대괄호 `[]` 안에 요소들을 쉼표로 구분하여 생성합니다.
+- 위의 예시는 문자열로 구성된 자동차 이름 배열을 생성합니다.
+
+### 배열 요소 접근 (인덱스 사용)
+```javascript
+var cars = ["Saab", "Volvo", "BMW"];
+var car = cars[0];  // 결과: Saab
+```
+- 배열의 인덱스는 0부터 시작합니다.
+- `cars[0]`은 첫 번째 요소인 `"Saab"`을 반환합니다.
+
+### 배열 요소 변경
+```javascript
+var cars = ["Saab", "Volvo", "BMW"];
+cars[0] = "Opel";  // 결과: ["Opel", "Volvo", "BMW"]
+```
+- 배열의 요소는 인덱스를 통해 수정할 수 있습니다.
+
+### 배열 생성 (객체 방식)
+```javascript
+var cars = new Array("Saab", "Volvo", "BMW");
+```
+- `new Array()`를 사용하여 배열을 생성할 수 있습니다.
+- 리터럴 방식과 동일한 배열이 생성됩니다.
+
+```javascript
+var points = new Array(40, 100, 1, 5, 25, 10);
+var points = [40, 100, 1, 5, 25, 10];
+```
+- 위 두 방법은 동일한 배열을 생성합니다.
+
+```javascript
+var points = new Array(40); // 길이 40인 빈 배열
+var points = [40];          // 요소 40을 가진 배열
+```
+- `new Array(40)`은 요소가 없는 40개의 공간을 가진 배열을 생성하므로 주의가 필요합니다.
+
+## JavaScript 배열 메서드
+
+### `pop()` - 마지막 요소 제거
+```javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.pop();  // 결과: ["Banana", "Orange", "Apple"]
+```
+
+### `push()` - 마지막에 요소 추가
+```javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Kiwi");  // 결과: ["Banana", "Orange", "Apple", "Mango", "Kiwi"]
+```
+
+### `length` - 배열 길이 활용
+```javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits[fruits.length] = "Kiwi";  // 결과: ["Banana", "Orange", "Apple", "Mango", "Kiwi"]
+```
+
+### `concat()` - 배열 병합
+```javascript
+var fruits = ["Kiwi", "Apple"];
+var vegs = ["Tomato", "Cucumber"];
+var discuss = fruits.concat(vegs);  // 결과: ["Kiwi", "Apple", "Tomato", "Cucumber"]
+```
+
+### `splice()` - 요소 추가/제거
+```javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 2, "Lemon", "Kiwi");  
+// 인덱스 2에서 2개 삭제 후 "Lemon", "Kiwi" 추가
+// 결과: ["Banana", "Orange", "Lemon", "Kiwi"]
+```
+
+### `slice()` - 배열의 일부 추출
+```javascript
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(3);  // 결과: ["Apple", "Mango"]
+```
+
+### `sort()` - 정렬
+```javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.sort();  // 결과: ["Apple", "Banana", "Mango", "Orange"]
+```
+
+### `sort()` - 숫자 정렬 시 주의
+```javascript
+var points = [40, 100, 1, 5, 25, 10];
+points.sort();  // 결과: [1, 10, 100, 25, 40, 5] (문자열로 비교됨)
+```
+
+### 숫자 정렬 (compare 함수 사용)
+```javascript
+var points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){ return a - b });  
+// 결과: [1, 5, 10, 25, 40, 100]
+```
+
+## JavaScript 제어문 (Controls)
+
+### 조건문 (if, else if, else, switch)
+조건문은 조건에 따라 서로 다른 동작을 수행합니다.
+
+```html
+<h2>JavaScript Controls</h2>
+<p id="demo"></p>
+
+<script>
+var time = new Date().getHours();
+var greeting;
+
+if (time < 10) {
+  greeting = "Good morning";
+} else if (time < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+
+document.getElementById("demo").innerHTML = greeting;
+</script>
+```
+
+## JavaScript 반복문 (Loops)
+
+### 반복문의 종류
+- `for`: 지정된 횟수만큼 반복
+- `for/in`: 객체의 속성을 반복
+- `for/of`: 반복 가능한 객체(배열, 문자열 등)의 값을 반복
+- `while`: 조건이 참인 동안 반복
+- `do/while`: 일단 실행 후 조건이 참인 동안 반복
+
+### `for...of` 예시
+```javascript
+let fruits = ["Banana", "Orange", "Apple"];
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+// 결과: Banana, Orange, Apple
+```
+
+### `for...in` 예시
+```javascript
+let person = {fname:"John", lname:"Doe", age:25};
+for (let key in person) {
+  console.log(key + ": " + person[key]);
+}
+// 결과: fname: John, lname: Doe, age: 25
+```
+
