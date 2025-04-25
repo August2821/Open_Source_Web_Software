@@ -1050,7 +1050,7 @@ person.fullName.apply(person1, ["Seoul", "Korea"]);
 
 # JavaScript 객체 메서드 (Object Methods)
 
-## ❖ 개요
+## 개요
 
 JavaScript에서는 객체를 효율적으로 조작하고 처리하기 위한 여러 내장 메서드를 제공합니다. 아래는 주요 객체 메서드들과 각각의 기능 및 사용 예시입니다.
 
@@ -1165,4 +1165,188 @@ for (let key in person) {
 }
 // name: David
 // age: 35
+```
+
+## Object Properties (객체 속성)
+
+### 속성 추가 또는 변경: `Object.defineProperty()`
+
+객체에 **새로운 속성을 추가**하거나, 기존 속성의 **속성 값이나 메타데이터를 수정**할 수 있습니다.
+
+#### 문법
+```javascript
+Object.defineProperty(object, property, descriptor)
+```
+
+#### 예시: 새로운 속성 추가
+```javascript
+const person = {};
+Object.defineProperty(person, 'name', {
+  value: 'Alice',
+  writable: true,
+  enumerable: true,
+  configurable: true
+});
+console.log(person.name); // Alice
+```
+
+### 여러 속성 추가 또는 변경: `Object.defineProperties()`
+
+한 번에 **여러 개의 속성**을 정의할 수 있습니다.
+
+```javascript
+const person = {};
+Object.defineProperties(person, {
+  firstName: {
+    value: 'John',
+    writable: true
+  },
+  lastName: {
+    value: 'Doe',
+    writable: true
+  }
+});
+console.log(person.firstName); // John
+```
+
+### 속성 접근: `Object.getOwnPropertyDescriptor()`
+
+특정 속성의 **설정값(descriptor)** 정보를 반환합니다.
+
+```javascript
+const obj = { x: 10 };
+const desc = Object.getOwnPropertyDescriptor(obj, 'x');
+console.log(desc);
+// { value: 10, writable: true, enumerable: true, configurable: true }
+```
+
+### 모든 속성의 디스크립터 확인: `Object.getOwnPropertyDescriptors()`
+
+객체 내의 모든 속성에 대한 디스크립터 정보를 반환합니다.
+
+```javascript
+const obj = { x: 1, y: 2 };
+const descriptors = Object.getOwnPropertyDescriptors(obj);
+console.log(descriptors);
+```
+
+### 객체의 모든 속성 이름을 배열로 반환: `Object.getOwnPropertyNames()`
+
+열거 가능 여부와 관계없이 **모든 속성 이름(key)**을 반환합니다.
+
+```javascript
+const obj = { a: 1, b: 2 };
+console.log(Object.getOwnPropertyNames(obj)); // ['a', 'b']
+```
+
+---
+
+### 열거 가능한 속성만 배열로 반환: `Object.keys()`
+
+객체에서 **열거 가능한 속성들만** 반환합니다.
+
+```javascript
+const obj = { a: 1, b: 2 };
+console.log(Object.keys(obj)); // ['a', 'b']
+```
+
+---
+
+### 프로토타입 접근: `Object.getPrototypeOf()`
+
+객체의 **프로토타입(상속 체계)**에 접근할 수 있습니다.
+
+```javascript
+const obj = {};
+const proto = Object.getPrototypeOf(obj);
+console.log(proto); // [Object: null prototype] {...}
+```
+
+### Getter와 Setter 추가: `Object.defineProperty()`
+
+객체에 **getter와 setter**를 정의할 수 있습니다.
+
+```javascript
+const person = {
+  firstName: 'John',
+  lastName: 'Doe'
+};
+
+Object.defineProperty(person, 'fullName', {
+  get() {
+    return this.firstName + ' ' + this.lastName;
+  },
+  set(name) {
+    const parts = name.split(' ');
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  }
+});
+
+console.log(person.fullName); // John Doe
+person.fullName = 'Jane Smith';
+console.log(person.firstName); // Jane
+```
+
+## JavaScript Class
+
+### 클래스 정의
+
+- `class` 키워드를 사용해 클래스를 정의할 수 있습니다.
+- 클래스에는 반드시 `constructor()` 메서드를 포함해야 합니다.
+
+```javascript
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
+```
+
+### constructor() 메서드
+
+- 클래스에서 객체가 생성될 때 자동으로 실행되는 **특수 메서드**입니다.
+- 객체의 **초기 속성값을 설정**할 때 사용됩니다.
+- `constructor`는 정확히 그 이름이어야 하며, 생략 시 JavaScript가 자동으로 빈 생성자를 추가합니다.
+
+### 클래스는 객체가 아닌 **템플릿**
+
+- 클래스 자체는 객체가 아니며, 객체를 생성하기 위한 **청사진(템플릿)**입니다.
+- `new` 키워드를 사용하여 인스턴스를 생성합니다.
+
+#### 예시
+```javascript
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+
+  getInfo() {
+    return this.name + ' - ' + this.year;
+  }
+}
+
+const myCar = new Car("Hyundai", 2023);
+console.log(myCar.getInfo()); // Hyundai - 2023
+```
+
+### 클래스 메서드
+
+- 클래스 내에 정의된 함수는 **메서드**라고 하며, 일반 객체의 메서드와 동일한 문법을 사용합니다.
+
+```javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    return this.name + ' makes a noise.';
+  }
+}
+
+const dog = new Animal('Dog');
+console.log(dog.speak()); // Dog makes a noise.
 ```
