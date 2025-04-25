@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Playlist Manager</h2>
+    
+    <script>
+        var songs = [];
+        songs.push(prompt("Enter 1st favorite song: "));
+        songs.push(prompt("Enter 2st favorite song: "));
+        songs.push(prompt("Enter 3st favorite song: "));
+
+        songs.sort();
+        alert("Your final list: " + songs.join(", "));
+    </script>
+</body>
+</html>
