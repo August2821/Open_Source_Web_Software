@@ -385,64 +385,62 @@ console.log(x); // 10
 
 ## JavaScript Data Types
 
-### 문자열과 숫자 더하기
-JavaScript에서 숫자와 문자열을 더할 경우, 숫자가 문자열로 변환됩니다.
+### 문자열과 숫자의 더하기
+JavaScript에서 숫자와 문자열을 더할 경우, 숫자는 문자열로 변환되어 연결됩니다.
 
 ```javascript
-var x = 16 + "Volvo";       // Output: "16Volvo"
-var x = "Volvo" + 16;       // Output: "Volvo16"
-var x = 16 + 4 + "Volvo";   // Output: "20Volvo"
-var x = "Volvo" + 16 + 4;   // Output: "Volvo164"
+var x = 16 + "Volvo";  // 결과: "16Volvo"
+var x = "Volvo" + 16;  // 결과: "Volvo16"
+var x = 16 + 4 + "Volvo";  // 결과: "20Volvo"
+var x = "Volvo" + 16 + 4;  // 결과: "Volvo164"
 
-var x = 5 + 5;              // Output: 10
-var y = "5" + 5;            // Output: "55"
-var z = 5 + "Hello";        // Output: "5Hello"
+var x = 5 + 5;     // 결과: 10
+var y = "5" + 5;   // 결과: "55"
+var z = 5 + "Hello"; // 결과: "5Hello"
 ```
 
-### 뺄셈의 동작
-뺄셈 연산은 피연산자들이 모두 숫자로 변환된 후 처리됩니다.
+### 빼기 연산은 숫자로 변환
+빼기 연산자는 피연산자들을 숫자로 변환하려고 시도합니다.
 
 ```javascript
 var x = 5;
-x = 5 + 7;        // 12 (number)
-x = 5 + "7";      // "57" (string)
-x = "5" + 7;      // "57" (string)
-x = 5 - 7;        // -2 (number)
-x = 5 - "7";      // -2 (number)
-x = "5" - 7;      // -2 (number)
-x = 5 - "x";      // NaN (number)
+x = 5 + 7;      // 결과: 12, typeof x: number
+x = 5 + "7";    // 결과: "57", typeof x: string
+x = "5" + 7;    // 결과: "57", typeof x: string
+x = 5 - 7;      // 결과: -2, typeof x: number
+x = 5 - "7";    // 결과: -2, typeof x: number
+x = "5" - 7;    // 결과: -2, typeof x: number
+x = 5 - "x";    // 결과: NaN, typeof x: number
 ```
 
 ### 동적 타입
-JavaScript는 동적 타입 언어입니다. 하나의 변수에 다양한 타입의 값을 저장할 수 있습니다.
+JavaScript는 동적 타입 언어입니다. 즉, 변수는 다양한 타입의 값을 가질 수 있습니다.
 
 ```javascript
-var x;          // undefined
-x = 5;          // Number
-y = "John";     // String
+var x;        // x는 undefined
+x = 5;        // x는 숫자
+x = "John";   // x는 문자열
 ```
 
 ### typeof 연산자
-변수의 타입을 확인할 수 있습니다.
+변수의 타입을 확인할 때 `typeof` 연산자를 사용할 수 있습니다.
 
 ```javascript
-typeof "John";        // "string"
-typeof "John Doe";    // "string"
-typeof 0;             // "number"
-typeof 314;           // "number"
-typeof 3.14;          // "number"
-typeof (3);           // "number"
-typeof (3 + 4);       // "number"
+typeof "John"        // "string"
+typeof "John Doe"    // "string"
+typeof 0             // "number"
+typeof 314           // "number"
+typeof 3.14          // "number"
+typeof (3)           // "number"
+typeof (3 + 4)       // "number"
 ```
 
-**퀴즈**
-```javascript
-typeof ""; // 결과: "string"
-```
+퀴즈: `typeof ""`의 결과는 무엇일까요? "string"
 
 ## JavaScript Strings
 
-### 문자열 정의
+문자열은 따옴표(작은 따옴표 또는 큰 따옴표) 안에 작성된 문자들의 집합입니다.
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -457,52 +455,78 @@ typeof ""; // 결과: "string"
 </html>
 ```
 
-### 문자열 메서드
+---
+
+## JavaScript String Methods
+
+### length
+문자열의 길이를 반환합니다.
 ```javascript
-// 문자열 길이
 var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var length = txt.length; // 26
-
-// slice()
-var str = "Apple, Banana, Kiwi";
-str.slice(7, 13);       // "Banana"
-str.slice(-12, -6);     // "Banana"
-str.slice(7);           // "Banana, Kiwi"
-
-// replace()
-var text = "Hi!";
-var newText = text.replace("Hi", "Hello"); // "Hello"
-
-// 대소문자 변환
-var text1 = "Hello World!";
-text1.toUpperCase();    // "HELLO WORLD!"
-text1.toLowerCase();    // "hello world!"
-
-// concat()
-var text1 = "Hello";
-var text2 = "World";
-text1.concat(" ", text2); // "Hello World"
-
-// charAt()
-var text = "HELLO WORLD";
-text.charAt(0); // "H"
-text[0];        // "H"
+var length = txt.length;  // 26
 ```
 
-### 문자열 검색
+### slice()
+문자열의 일부를 추출하여 새로운 문자열을 반환합니다.
 ```javascript
-// indexOf()
-let text = "Please locate my cat!";
-text.indexOf("locate"); // 7
+var str = "Apple, Banana, Kiwi";
+str.slice(7, 13);     // "Banana"
+str.slice(-12, -6);   // "Banana"
+str.slice(7);         // "Banana, Kiwi"
+```
 
-// includes()
-let text2 = "Hello world, welcome to the universe.";
-text2.includes("world"); // true
+### replace()
+문자열의 일치하는 첫 부분을 새 값으로 교체합니다.
+```javascript
+var text = "Hi!";
+var newText = text.replace("Hi", "Hello");  // "Hello"
+```
+
+### toUpperCase(), toLowerCase()
+문자열을 대문자 또는 소문자로 변환합니다.
+```javascript
+var text1 = "Hello World!";
+text1.toUpperCase();  // "HELLO WORLD!"
+text1.toLowerCase();  // "hello world!"
+```
+
+### concat()
+문자열을 연결합니다.
+```javascript
+var text1 = "Hello";
+var text2 = "World";
+text1.concat(" ", text2);  // "Hello World"
+"Hello" + " " + "World!";  // "Hello World"
+```
+
+### charAt()
+지정한 인덱스의 문자를 반환합니다.
+```javascript
+var text = "HELLO WORLD";
+text.charAt(0);  // "H"
+text[0];         // "H"
+```
+
+## JavaScript Strings Search
+
+### indexOf()
+지정한 문자열이 처음 나타나는 인덱스를 반환합니다.
+```javascript
+let text = "Please locate my cat!";
+text.indexOf("locate");  // 7
+```
+
+### includes()
+문자열이 포함되어 있는지 여부를 `true` 또는 `false`로 반환합니다.
+```javascript
+let text = "Hello world, welcome to the universe.";
+text.includes("world");  // true
 ```
 
 ## JavaScript Numbers
 
-### 숫자 출력 예시
+JavaScript는 숫자 데이터 타입이 하나만 존재합니다. 정수와 부동소수 모두 같은 타입입니다.
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -530,15 +554,15 @@ x.toString();           // "123"
 ```
 
 ### Number.isInteger()
-값이 정수인지 확인합니다.
+숫자가 정수인지 확인합니다.
 ```javascript
-Number.isInteger(123);     // true
-Number.isInteger(-123);    // true
-Number.isInteger("123");   // false
+Number.isInteger(123);    // true
+Number.isInteger(-123);   // true
+Number.isInteger('123');  // false
 ```
 
 ### Number()
-다양한 타입을 숫자로 변환합니다.
+값을 숫자로 변환합니다.
 ```javascript
 Number(true);       // 1
 Number(false);      // 0
@@ -555,12 +579,12 @@ Number("John");     // NaN
 ### parseInt()
 문자열을 정수로 변환합니다.
 ```javascript
-parseInt("-10");        // -10
-parseInt("-10.33");     // -10
-parseInt("10");         // 10
-parseInt("10.33");      // 10
-parseInt("10 20 30");   // 10
-parseInt("10 years");   // 10
-parseInt("years 10");   // NaN
+parseInt("-10");       // -10
+parseInt("-10.33");    // -10
+parseInt("10");        // 10
+parseInt("10.33");     // 10
+parseInt("10 20 30");  // 10
+parseInt("10 years");  // 10
+parseInt("years 10");  // NaN
 ```
 
