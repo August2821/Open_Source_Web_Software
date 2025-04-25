@@ -603,3 +603,163 @@ parseInt("10 years");  // 10
 parseInt("years 10");  // NaN
 ```
 
+# JavaScript 함수 (JavaScript Functions)
+
+## 함수란?
+
+JavaScript에서 함수(Function)는 **입력을 받아 특정 작업을 수행하고 결과를 반환하는 일종의 블랙박스**입니다. 반복되는 코드를 줄이고 재사용성을 높이는 데 사용됩니다.
+
+## 함수의 기본 문법
+
+```javascript
+function 함수이름(매개변수1, 매개변수2, ...) {
+  // 실행할 코드
+}
+```
+
+### 예시
+
+```javascript
+function add(x, y) {
+  return x + y;
+}
+```
+
+이 함수는 `x`와 `y`를 더한 값을 반환합니다.
+
+## 함수 호출 (Function Invocation)
+
+함수는 다음과 같은 방법으로 호출할 수 있습니다:
+
+- 자바스크립트 코드에서 직접 호출
+- 자동 실행 (Self-invoking)
+- 이벤트 발생 시 호출
+
+## 1. 자바스크립트 코드에서 직접 호출
+
+### 예제
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>JavaScript Function</h2>
+  <p>Convert from Fahrenheit to Celsius</p>
+  <p id="demo"></p>
+
+  <script>
+    function toCelsius(fahrenheit) {
+      return (5 / 9) * (fahrenheit - 32);
+    }
+
+    document.getElementById("demo").innerHTML = toCelsius(77);
+  </script>
+</body>
+</html>
+```
+
+**설명:** `toCelsius(77)` 함수는 직접 호출되어 `77도 화씨`를 섭씨로 변환하고, 결과를 웹 페이지에 출력합니다.
+
+## 2. 자동 실행 함수 (Self-invoking Function)
+
+함수 표현식에 괄호 `()`를 붙이면 즉시 실행됩니다.
+
+### 예제
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>JavaScript Function</h2>
+  <p>Automatically invoked function</p>
+  <p id="demo"></p>
+
+  <script>
+    (function () {
+      document.getElementById("demo").innerHTML = "Hello! I called myself";
+    })();
+  </script>
+</body>
+</html>
+```
+
+**설명:** 위 함수는 정의되자마자 자동으로 실행되며, "Hello! I called myself"라는 메시지를 출력합니다.
+
+## 3. 이벤트 발생 시 함수 호출
+
+이벤트(예: 버튼 클릭) 발생 시 함수가 실행될 수 있습니다.
+
+### 예제
+
+```html
+<script>
+  function greeting(title, name) {
+    alert("Hello " + title + " " + name + "!");
+  }
+</script>
+
+<button onclick="greeting('Mr.', 'Hong')">Click Here</button>
+```
+
+**설명:** 버튼을 클릭하면 `greeting` 함수가 실행되며 알림창에 인사 메시지를 표시합니다.
+
+## 함수의 지역 변수 (Local Variables)
+
+함수 내에서 선언된 변수는 **해당 함수 안에서만 유효한 지역 변수(Local Variable)**가 됩니다.
+
+### 예제
+
+```javascript
+function example() {
+  let message = "Hello!";
+  console.log(message);
+}
+console.log(message); // 오류 발생: message는 정의되지 않음
+```
+
+## 기본 매개변수 값 (Default Parameter Values)
+
+매개변수에 기본값을 설정할 수 있습니다.
+
+### 예제
+
+```javascript
+function multiply(a, b = 2) {
+  return a * b;
+}
+
+console.log(multiply(5));    // 10 (5 * 2)
+console.log(multiply(5, 3)); // 15 (5 * 3)
+```
+
+## 나머지 매개변수 (Rest Parameter)
+
+`...` 문법을 사용하면 **여러 개의 인자를 배열로 받을 수 있습니다.**
+
+### 예제
+
+```javascript
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // 10
+```
+
+## 인자가 부족한 경우
+
+함수를 호출할 때 전달된 인자의 수가 함수에서 정의한 매개변수보다 적을 경우, **누락된 매개변수는 `undefined`가 됩니다.**
+
+### 예제
+
+```javascript
+function printInfo(name, age) {
+  console.log("이름: " + name);
+  console.log("나이: " + age);
+}
+
+printInfo("철수"); 
+// 출력:
+// 이름: 철수
+// 나이: undefined
+```
