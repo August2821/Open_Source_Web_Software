@@ -424,3 +424,247 @@ const dog = new Animal('Dog');
 console.log(dog.speak()); // Dog makes a noise.
 ```
 
+---
+
+# JavaScript DOM(Document Object Model)
+
+## DOM이란?
+- DOM(Document Object Model)은 HTML 문서를 트리 구조로 표현한 계층적 모델입니다.
+- 브라우저는 HTML 문서를 로드한 뒤 DOM 트리를 생성하며, JavaScript는 이 DOM을 통해 웹 페이지를 동적으로 제어할 수 있습니다.
+
+### 예시
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="title">안녕하세요!</h1>
+  </body>
+</html>
+```
+
+이 HTML은 다음과 같은 DOM 트리 구조로 표현됩니다:
+
+```
+document
+└── html
+    ├── head
+    └── body
+        └── h1 (id="title")
+```
+
+## Document
+- HTML 문서가 브라우저에 로드되면 `document` 객체로 변환됩니다.
+- `document` 객체는 DOM의 루트 노드이며, 모든 노드에 접근할 수 있는 출발점입니다.
+
+## Property (속성)
+- 속성은 값을 가져오거나 변경할 수 있는 요소입니다.
+- 예를 들어 HTML 요소의 내용을 변경하는 것이 대표적인 속성 조작입니다.
+
+## Method (메서드)
+- HTML 요소에 대해 수행할 수 있는 동작입니다.
+- 예: HTML 요소 추가, 삭제 등
+
+## Document, Methods and Property Example
+```javascript
+document.getElementById("demo").innerHTML = "Hello World!";
+```
+- `getElementById`는 메서드입니다.
+- `innerHTML`은 속성입니다.
+
+## JavaScript로 동적인 웹 페이지 구현
+JavaScript는 DOM을 이용해 다음을 수행할 수 있습니다:
+- HTML 내용 변경
+- HTML 요소 및 속성 변경
+- CSS 스타일 변경
+- HTML 요소 및 속성 추가/삭제
+- HTML 이벤트에 반응
+- 새로운 HTML 이벤트 생성
+
+## HTML 요소 찾기 및 접근
+
+### ID로 찾기
+```javascript
+document.getElementById("demo");
+```
+
+### 태그 이름으로 찾기
+```javascript
+document.getElementsByTagName("p");
+```
+
+### 클래스 이름으로 찾기
+```javascript
+document.getElementsByClassName("example");
+```
+
+### CSS 선택자로 찾기
+```javascript
+document.querySelectorAll(".example p");
+```
+
+## HTML 요소 찾기 예시
+
+### ID로 찾기
+```html
+<p id="demo">텍스트</p>
+<script>
+  const element = document.getElementById("demo");
+  element.innerHTML = "변경된 텍스트";
+</script>
+```
+
+### 태그 이름으로 찾기
+```html
+<p>첫 번째</p>
+<p>두 번째</p>
+<script>
+  const elements = document.getElementsByTagName("p");
+  elements[1].innerHTML = "두 번째 변경";
+</script>
+```
+
+### 클래스 이름으로 찾기
+```html
+<p class="item">1</p>
+<p class="item">2</p>
+<p class="item">3</p>
+<script>
+  const items = document.getElementsByClassName("item");
+  items[2].innerHTML = "세 번째 아이템";
+</script>
+```
+
+## HTMLCollection 객체
+- `getElementsByTagName`과 `getElementsByClassName`은 `HTMLCollection`을 반환합니다.
+- 배열처럼 index로 접근하고 `length`를 사용할 수 있지만, 실제 배열은 아닙니다.
+
+```javascript
+const collection = document.getElementsByClassName("item");
+for (let i = 0; i < collection.length; i++) {
+  console.log(collection[i].innerHTML);
+}
+```
+
+> **주의:** `push()`, `pop()` 같은 배열 메서드는 사용할 수 없습니다.
+
+## 프로그램 결과 예시
+```html
+<p class="fruit">사과</p>
+<p class="fruit">바나나</p>
+<p class="fruit">오렌지</p>
+<script>
+  const fruits = document.getElementsByClassName("fruit");
+  alert(fruits[1].innerHTML); // 바나나
+</script>
+```
+
+## 리스트의 세 번째 요소 접근
+```html
+<ul>
+  <li>첫 번째</li>
+  <li>두 번째</li>
+  <li>세 번째</li>
+</ul>
+<script>
+  const items = document.getElementsByTagName("li");
+  alert(items[2].innerHTML); // 세 번째
+</script>
+```
+
+## CSS 선택자로 요소 찾기
+```html
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+<script>
+  const boxes = document.querySelectorAll(".box");
+  boxes[1].innerHTML = "두 번째 박스";
+</script>
+```
+
+## NodeList 객체
+- `querySelectorAll`은 `NodeList`를 반환합니다.
+- `NodeList`도 `length`와 index를 사용할 수 있지만 배열은 아닙니다.
+- 배열 메서드는 사용할 수 없습니다.
+
+## HTML 문서 객체
+```javascript
+document.body           // <body> 요소 반환
+document.head           // <head> 요소 반환
+document.forms          // 모든 <form> 요소 반환
+document.images         // 모든 <img> 요소 반환
+document.scripts        // 모든 <script> 요소 반환
+document.title          // 문서 제목 반환
+```
+
+### 예시
+```javascript
+console.log(document.body.innerHTML);
+```
+
+## HTML 콘텐츠 변경
+```javascript
+document.getElementById("myText").innerHTML = "변경됨";
+```
+
+## HTML 속성 변경
+```javascript
+document.getElementById("myImage").src = "newimage.jpg";
+```
+
+## form 값 설정
+```javascript
+document.getElementById("username").value = "홍길동";
+```
+
+## 연습: 비밀번호 확인
+```html
+<input type="password" id="pw1">
+<input type="password" id="pw2">
+<p id="result"></p>
+<script>
+  const pw1 = document.getElementById("pw1").value;
+  const pw2 = document.getElementById("pw2").value;
+  if (pw1 === pw2) {
+    document.getElementById("result").innerHTML = "비밀번호 일치";
+  } else {
+    document.getElementById("result").innerHTML = "불일치";
+  }
+</script>
+```
+
+## CSS 스타일 변경
+```javascript
+document.getElementById("box").style.color = "red";
+```
+
+### 이벤트 발생 시 스타일 변경
+```javascript
+document.getElementById("box").onclick = function() {
+  this.style.backgroundColor = "yellow";
+};
+```
+
+## display 및 position 속성 변경
+```javascript
+document.getElementById("myDIV").style.display = "none";       // 요소 숨김
+document.getElementById("myDIV").style.position = "absolute";  // 위치 고정
+```
+
+## 배경색 토글 버튼 예시
+```html
+<body id="myBody" style="background-color: white;">
+  <button onclick="toggleBg()">배경 토글</button>
+  <script>
+    function toggleBg() {
+      const body = document.getElementById("myBody");
+      if (body.style.backgroundColor === "white") {
+        body.style.backgroundColor = "black";
+      } else {
+        body.style.backgroundColor = "white";
+      }
+    }
+  </script>
+</body>
+```
+
+---
