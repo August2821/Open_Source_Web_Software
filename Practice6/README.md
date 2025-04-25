@@ -349,6 +349,23 @@ console.log(x); // 10
 
 그 외의 값은 모두 참으로 간주됩니다.
 
+### `undefined`
+`undefined`는 값이 할당되지 않은 변수에 자동으로 부여되는 값입니다.
+
+언제 발생하나?
+- 변수를 선언했지만 값을 할당하지 않은 경우
+- 함수가 return 문 없이 종료된 경우
+- 객체에 존재하지 않는 속성을 접근했을 경우
+- 배열의 존재하지 않는 인덱스를 참조했을 경우
+
+### `NaN` (Not-a-Number)
+`NaN`은 숫자가 아닌 값을 숫자로 변환하려고 할 때 생기는 특수한 숫자값입니다. 즉, 수학적으로 잘못된 연산 결과를 나타냅니다.
+
+언제 발생하나?
+- 문자열을 숫자처럼 연산하려고 할 때
+- 숫자 변환이 실패했을 때
+- Math 관련 연산이 실패했을 때
+
 ## JavaScript 비교 연산자 (Comparison Operators)
 
 | 연산자 | 설명 | 예시 | 결과 |
@@ -455,8 +472,6 @@ typeof (3 + 4)       // "number"
 </html>
 ```
 
----
-
 ## JavaScript String Methods
 
 ### length
@@ -562,7 +577,7 @@ Number.isInteger('123');  // false
 ```
 
 ### Number()
-값을 숫자로 변환합니다.
+값의 data type을 number로 변환합니다.
 ```javascript
 Number(true);       // 1
 Number(false);      // 0
@@ -577,7 +592,7 @@ Number("John");     // NaN
 ```
 
 ### parseInt()
-문자열을 정수로 변환합니다.
+string을 int로 변환합니다. type은 number로 변환됩니다.
 ```javascript
 parseInt("-10");       // -10
 parseInt("-10.33");    // -10
