@@ -1239,8 +1239,6 @@ const obj = { a: 1, b: 2 };
 console.log(Object.getOwnPropertyNames(obj)); // ['a', 'b']
 ```
 
----
-
 ### 열거 가능한 속성만 배열로 반환: `Object.keys()`
 
 객체에서 **열거 가능한 속성들만** 반환합니다.
@@ -1249,8 +1247,6 @@ console.log(Object.getOwnPropertyNames(obj)); // ['a', 'b']
 const obj = { a: 1, b: 2 };
 console.log(Object.keys(obj)); // ['a', 'b']
 ```
-
----
 
 ### 프로토타입 접근: `Object.getPrototypeOf()`
 
@@ -1312,7 +1308,7 @@ class Car {
 
 ### 클래스는 객체가 아닌 **템플릿**
 
-- 클래스 자체는 객체가 아니며, 객체를 생성하기 위한 **청사진(템플릿)**입니다.
+- 클래스 자체는 객체가 아니며, 객체를 생성하기 위한 **템플릿**입니다.
 - `new` 키워드를 사용하여 인스턴스를 생성합니다.
 
 #### 예시
