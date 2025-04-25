@@ -367,16 +367,16 @@ console.log(x); // 10
 <!DOCTYPE html>
 <html>
 <body>
-<h2>JavaScript Comparison</h2>
-<p>느슨한 동등 비교 (==)</p>
-<p id="demo1"></p>
-<p>엄격한 동등 비교 (===)</p>
-<p id="demo2"></p>
-<script>
-  var a = 10;
-  document.getElementById("demo1").innerHTML = (a == "10"); // true
-  document.getElementById("demo2").innerHTML = (a === "10"); // false
-</script>
+    <h2>JavaScript Comparison</h2>
+    <p>느슨한 동등 비교 (==)</p>
+    <p id="demo1"></p>
+    <p>엄격한 동등 비교 (===)</p>
+    <p id="demo2"></p>
+    <script>
+        var a = 10;
+        document.getElementById("demo1").innerHTML = (a == "10"); // true
+        document.getElementById("demo2").innerHTML = (a === "10"); // false
+    </script>
 </body>
 </html>
 ```
@@ -389,14 +389,14 @@ console.log(x); // 10
 JavaScript에서 숫자와 문자열을 더할 경우, 숫자가 문자열로 변환됩니다.
 
 ```javascript
-var x = 16 + "Volvo"; // Output: "16Volvo"
-var x = "Volvo" + 16; // Output: "Volvo16"
-var x = 16 + 4 + "Volvo"; // Output: "20Volvo"
-var x = "Volvo" + 16 + 4; // Output: "Volvo164"
+var x = 16 + "Volvo";       // Output: "16Volvo"
+var x = "Volvo" + 16;       // Output: "Volvo16"
+var x = 16 + 4 + "Volvo";   // Output: "20Volvo"
+var x = "Volvo" + 16 + 4;   // Output: "Volvo164"
 
-var x = 5 + 5; // Output: 10
-var y = "5" + 5; // Output: "55"
-var z = 5 + "Hello"; // Output: "5Hello"
+var x = 5 + 5;              // Output: 10
+var y = "5" + 5;            // Output: "55"
+var z = 5 + "Hello";        // Output: "5Hello"
 ```
 
 ### 뺄셈의 동작
@@ -417,9 +417,9 @@ x = 5 - "x";      // NaN (number)
 JavaScript는 동적 타입 언어입니다. 하나의 변수에 다양한 타입의 값을 저장할 수 있습니다.
 
 ```javascript
-var x;       // undefined
-x = 5;       // Number
-y = "John"; // String
+var x;          // undefined
+x = 5;          // Number
+y = "John";     // String
 ```
 
 ### typeof 연산자
@@ -447,12 +447,12 @@ typeof ""; // 결과: "string"
 <!DOCTYPE html>
 <html>
 <body>
-<h2>JavaScript Strings</h2>
-<p id="demo"></p>
-<script>
-var text = "John Doe";
-document.getElementById("demo").innerHTML = text;
-</script>
+    <h2>JavaScript Strings</h2>
+    <p id="demo"></p>
+    <script>
+        var text = "John Doe";
+        document.getElementById("demo").innerHTML = text;
+    </script>
 </body>
 </html>
 ```
@@ -507,13 +507,13 @@ text2.includes("world"); // true
 <!DOCTYPE html>
 <html>
 <body>
-<h2>JavaScript Numbers</h2>
-<p id="demo"></p>
-<script>
-var x = 3.14;
-var y = 3;
-document.getElementById("demo").innerHTML = x + "<br>" + y;
-</script>
+    <h2>JavaScript Numbers</h2>
+    <p id="demo"></p>
+    <script>
+        var x = 3.14;
+        var y = 3;
+        document.getElementById("demo").innerHTML = x + "<br>" + y;
+    </script>
 </body>
 </html>
 ```
@@ -524,9 +524,9 @@ document.getElementById("demo").innerHTML = x + "<br>" + y;
 숫자를 문자열로 변환합니다.
 ```javascript
 var x = 123;
-x.toString();       // "123"
-(123).toString();   // "123"
-(100 + 23).toString(); // "123"
+x.toString();           // "123"
+(123).toString();       // "123"
+(100 + 23).toString();  // "123"
 ```
 
 ### Number.isInteger()
