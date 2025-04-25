@@ -837,9 +837,9 @@ var discuss = fruits.concat(vegs);  // 결과: ["Kiwi", "Apple", "Tomato", "Cucu
 ### `splice()` - 요소 추가/제거
 ```javascript
 var fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.splice(2, 2, "Lemon", "Kiwi");  
-// 인덱스 2에서 2개 삭제 후 "Lemon", "Kiwi" 추가
-// 결과: ["Banana", "Orange", "Lemon", "Kiwi"]
+fruits.splice(1, 2, "Lemon", "Kiwi");  
+// 인덱스 1부터 2개 삭제 후 "Lemon", "Kiwi" 추가
+// 결과: ["Banana", "Lemon", "Kiwi", "Mango"]
 ```
 
 ### `slice()` - 배열의 일부 추출
@@ -919,3 +919,133 @@ for (let key in person) {
 // 결과: fname: John, lname: Doe, age: 25
 ```
 
+---
+
+# JavaScript 객체 지향 패러다임
+
+## JavaScript 객체란?
+- 객체(Object)는 속성(properties)과 메서드(methods)를 가진 **독립적인 코드 단위**입니다.
+- 객체는 실생활의 사물과 유사하게 행동하며, 정보를 저장하고 동작을 수행합니다.
+
+### 예시: 자동차 객체
+```javascript
+var car = {
+  brand: "Hyundai",
+  model: "Avante",
+  color: "white",
+  start: function() {
+    return "Engine started";
+  }
+};
+```
+
+## 객체 생성: 객체 리터럴(Object Literal)
+
+JavaScript 객체는 객체 리터럴을 사용하여 생성할 수 있습니다.
+
+### 예시
+```javascript
+var person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+```
+
+## 객체의 속성(Properties)
+
+- 객체는 **이름(name)**과 **값(value)**의 쌍으로 구성된 속성들을 가집니다.
+- 이 속성들은 해당 객체의 **상태나 정보**를 표현합니다.
+
+### 예시
+```javascript
+var person = {
+  firstName: "Alice",
+  age: 30
+};
+```
+
+---
+
+## 객체 속성 접근 방법
+
+속성은 두 가지 방식으로 접근할 수 있습니다:
+
+- 점 표기법: `objectName.propertyName`
+- 대괄호 표기법: `objectName["propertyName"]`
+
+### 예시
+```javascript
+console.log(person.firstName);    // Alice
+console.log(person["age"]);       // 30
+```
+
+## 객체의 메서드(Methods)
+
+- 메서드는 객체에 **속성처럼 저장된 함수**입니다.
+- 객체가 수행할 수 있는 **동작(기능)**을 정의합니다.
+
+### 예시
+```javascript
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+console.log(person.fullName());  // John Doe
+```
+
+## this 키워드
+
+- 함수 내에서 `this`는 해당 함수를 **소유한 객체**를 참조합니다.
+- 위의 예시에서 `this.firstName`은 `person.firstName`을 의미합니다.
+
+## call() 메서드
+
+- `call()` 메서드는 한 객체의 메서드를 다른 객체에 적용할 수 있게 합니다.
+- **첫 번째 인자**로 사용할 객체를 지정하며, **그 뒤에 전달할 인자들**을 각각 나열합니다.
+
+### 예시
+```javascript
+var person = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + " from " + city + ", " + country;
+  }
+};
+
+var person1 = {
+  firstName: "Jane",
+  lastName: "Smith"
+};
+
+console.log(person.fullName.call(person1, "Oslo", "Norway")); 
+// Jane Smith from Oslo, Norway
+```
+
+## apply() 메서드
+
+- `apply()`는 `call()`과 거의 동일하지만, **인자를 배열로 받습니다.**
+
+### 예시
+```javascript
+console.log(person.fullName.apply(person1, ["Oslo", "Norway"])); 
+// Jane Smith from Oslo, Norway
+```
+
+## call() vs apply() 차이점
+
+| 메서드 | 인자 형식 |
+|--------|------------|
+| `call()` | 각각의 인자를 개별로 전달 |
+| `apply()` | 인자들을 **배열 형태**로 전달 |
+
+### 예시
+```javascript
+person.fullName.call(person1, "Seoul", "Korea");
+person.fullName.apply(person1, ["Seoul", "Korea"]);
+```
