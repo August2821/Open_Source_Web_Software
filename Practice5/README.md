@@ -101,10 +101,74 @@ Flexbox 사용을 시작하려면 **`display` 속성을 `flex`로 설정**해야
 - `Logo`, `Menu`, `Login`을 같은 줄에 배치하려면 float, margin 조정 등 복잡한 작업 필요
 - 반응형 디자인도 따로 고려해야 함
 
+```html
+<!-- float 방식으로 정렬 -->
+<div class="header">
+  <div class="logo">Logo</div>
+  <div class="menu">Menu</div>
+  <div class="login">Login</div>
+</div>
+```
+
+```css
+.header {
+  overflow: hidden;
+}
+
+.logo, .menu, .login {
+  float: left;
+  margin: 0 10px;
+  line-height: 60px;
+}
+
+.login {
+  float: right;
+}
+```
+
+- **문제점**:
+  - float으로 인해 clearfix 필요
+  - margin으로 수동 조정 필요
+  - 모바일 대응하려면 따로 미디어 쿼리 작성 필요
+
 ### Flexbox 사용 시:
 - 코드가 간결하고 최소화됨
 - 자동 수직 정렬 가능
 - **미디어 쿼리만 추가하면 반응형 대응 용이**
+
+```html
+<!-- Flexbox로 간단하게 정렬 -->
+<div class="header">
+  <div class="logo">Logo</div>
+  <div class="menu">Menu</div>
+  <div class="login">Login</div>
+</div>
+```
+
+```css
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  background-color: #f0f0f0;
+}
+```
+
+- **장점**:
+  - `display: flex` 한 줄로 레이아웃 정렬
+  - `align-items: center`로 세로 중앙 정렬
+  - 반응형은 미디어 쿼리로 간단하게 확장 가능
+
+```css
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+```
 
 ## 4. Flex Container 관련 속성
 
@@ -140,6 +204,50 @@ Flexbox 사용을 시작하려면 **`display` 속성을 `flex`로 설정**해야
 | `flex-basis` | 기본 크기 설정 |
 | `flex` | `flex-grow`, `flex-shrink`, `flex-basis`를 한 번에 설정 |
 | `align-self` | 개별 요소의 교차 축 정렬 설정 |
+
+```html
+<div class="container">
+  <div class="item item1">1</div>
+  <div class="item item2">2</div>
+  <div class="item item3">3</div>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  height: 100px;
+}
+
+.item {
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+/* flex item 속성 적용 */
+.item1 {
+  background-color: crimson;
+  order: 2;            /* 순서 변경 */
+  flex-grow: 1;        /* 남은 공간 비율 */
+}
+
+.item2 {
+  background-color: royalblue;
+  order: 1;
+  flex: 2 1 100px;     /* grow, shrink, basis */
+}
+
+.item3 {
+  background-color: seagreen;
+  order: 3;
+  align-self: flex-end; /* 개별 정렬 */
+}
+```
+
+- `.item1`은 두 번째에 표시되고, `flex-grow: 1`로 남은 공간을 일부 차지함
+- `.item2`는 첫 번째에 오며, `flex: 2 1 100px`로 2배 성장, 줄어들 수 있고 기본 크기는 100px
+- `.item3`은 세 번째에 오며, 컨테이너의 아래쪽으로 정렬됨 (`align-self`)
 
 ## 6. 미디어 쿼리(Media Queries)
 
