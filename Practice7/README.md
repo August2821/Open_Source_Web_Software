@@ -877,3 +877,105 @@ console.log(nodelist.length);   // 가능
 
 ---
 
+# JavaScript Events
+
+JavaScript는 **이벤트(event)**가 발생했을 때 실행됩니다. 이벤트는 사용자의 행동에 반응하여 웹 페이지를 동적으로 만듭니다.
+
+## JavaScript는 이벤트가 발생할 때 실행될 수 있다
+
+웹 페이지에서 어떤 동작(예: 클릭, 입력 등)이 발생하면 JavaScript 코드가 실행되도록 설정할 수 있습니다.
+
+## 이벤트의 종류
+
+- 사용자가 마우스를 클릭할 때 (`onclick`)
+- 웹 페이지가 로드될 때 (`onload`)
+- 이미지가 로드될 때 (`onload`)
+- 마우스가 요소 위로 움직일 때 (`onmouseover`)
+- 입력 필드가 변경될 때 (`onchange`)
+- HTML 폼이 제출될 때 (`onsubmit`)
+- 사용자가 키를 누를 때 (`onkeydown`, `onkeyup`, `onkeypress`)
+
+## 사용자가 마우스를 클릭했을 때
+
+### `onclick` 이벤트
+
+```html
+<button onclick="alert('버튼이 클릭되었습니다!')">클릭하세요</button>
+```
+
+- `onclick`은 클릭 시 실행될 동작을 지정합니다.
+
+## 입력 필드가 변경되었을 때
+
+### `onchange` 이벤트
+
+```html
+<input type="text" onchange="alert('내용이 변경되었습니다')">
+```
+
+- 사용자가 입력한 값을 변경하고 포커스를 벗어날 때 실행됩니다.
+
+## 이미지 확대 (이벤트 발생 시)
+
+### `onmouseover` & `onmouseout`
+
+```html
+<img src="sample.jpg" width="200" 
+     onmouseover="this.style.width='300px'" 
+     onmouseout="this.style.width='200px'">
+```
+
+- `onmouseover`: 마우스가 이미지 위에 있을 때 실행됩니다.
+- `onmouseout`: 마우스가 이미지 밖으로 나갔을 때 실행됩니다.
+
+## addEventListener() 메서드
+
+`addEventListener()`는 이벤트가 발생했을 때 실행할 함수를 등록합니다.
+
+### 구문
+
+```javascript
+element.addEventListener("이벤트", 함수, useCapture);
+```
+
+- `"이벤트"`: 이벤트 이름 (`click`, `mouseover` 등)
+- `함수`: 실행할 함수
+- `useCapture` (선택): true면 캡처링, false면 버블링 (기본값)
+
+### 예시
+
+```javascript
+const btn = document.getElementById("myBtn");
+btn.addEventListener("click", function() {
+  alert("버튼 클릭됨!");
+});
+```
+
+```javascript
+const image = document.getElementById("myImage");
+image.addEventListener("mouseover", function() {
+  image.style.width = "300px";
+});
+image.addEventListener("mouseout", function() {
+  image.style.width = "200px";
+});
+```
+
+## Practice 5: 글자 수 세는 간단한 예제 (Character Counter)
+
+```html
+<textarea id="myTextarea" rows="4" cols="50"></textarea>
+<p id="counter">0자</p>
+
+<script>
+  const textarea = document.getElementById("myTextarea");
+  const counter = document.getElementById("counter");
+
+  textarea.addEventListener("input", function() {
+    counter.textContent = textarea.value.length + "자";
+  });
+</script>
+```
+
+- 사용자가 텍스트를 입력할 때마다 글자 수를 표시합니다.
+- `input` 이벤트는 입력이 변경될 때마다 발생합니다.
