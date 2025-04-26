@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simple Quiz</h1> <hr>
+    <h2>1. What is the capital of France</h2>
+
+    <form>
+        <input type="radio" onclick="correct('London')"> London <br>
+        <input type="radio" onclick="correct('Berlin')"> Berlin <br>
+        <input type="radio" onclick="correct('Paris')"> Paris <br>
+        <input type="radio" onclick="correct('Rome')"> Rome <br>
+    </form> <br>
+    
+    <p id="correct"></p>
+    <button id="hint" onclick="hint()">Show Hint</button>
+    <p id="output"></p>
+    <script>
+        function correct(name){
+            if(name == "Paris"){
+                document.getElementById("correct").innerHTML = "Correct!";
+            }
+        }
+
+        function hint(){
+            document.getElementById("output").innerHTML = "Hint: It's also called the City of Light"
+            document.getElementById("output").style.color = "blue";
+        }
+    </script>
+
+</body>
+</html>

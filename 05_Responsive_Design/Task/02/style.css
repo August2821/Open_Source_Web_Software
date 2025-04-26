@@ -1,0 +1,15 @@
+:root{
+    --main_color: #f4511e;
+}
+
+.bg1{
+    background-color: var(--main_color);
+    color: white;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.bg2{
+    background-color: red;
+    color: white;
+}

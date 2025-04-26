@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        var x, str;
+        x = parseInt(true);
+        document.writeln("true -> " + x + ", type: " + typeof x + "<br>");
+
+        x = parseInt(false);
+        document.writeln("false -> " + x + ", type: " + typeof x + "<br>");
+        
+        str ="10"; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+
+        str =" 10"; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+
+        str ="10 "; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+
+        str =" 10 "; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+
+        str =" 1 0 "; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+
+        str ="10.33"; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+
+        str ="10,33"; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+  
+        str ="10 33"; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+
+        str ="John"; x = parseInt(str);
+        document.writeln(str + " -> " + x + ", type: " + typeof x + "<br>");
+    </script>
+</body>
+</html>
