@@ -268,6 +268,29 @@ if … else, return, switch, try … catch, var
 | `let`  | 블록 범위(block-scoped), 값 변경 가능   | 값이 변경될 수 있을 때 사용     |
 | `const`| 블록 범위, 상수로서 값 변경 불가       | 변경되지 않는 값을 저장할 때 사용 |
 
+### 함수 범위(function-scoped)
+변수가 함수 안에서 선언되면 그 함수 안에서만 접근 가능
+```javascript
+function myFunction() {
+  var message = "Hello!";
+  console.log(message); // Hello!
+}
+
+console.log(message); // 에러: message is not defined
+```
+
+### 블록 범위 (Block Scope)
+변수가 중괄호 `{}`로 둘러싸인 블록 안에서 선언되면 그 블록 안에서만 접근 가능
+```javascript
+{
+  let x = 10;
+  const y = 20;
+  console.log(x, y); // 10 20
+}
+
+console.log(x, y); // 에러: x is not defined, y is not defined
+```
+
 ### `let` 예시
 ```javascript
 let score = 10;
